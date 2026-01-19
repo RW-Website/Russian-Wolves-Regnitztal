@@ -1,216 +1,107 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <title>Russian Wolves Regnitztal</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .announcement-card {
+            background-color: #ffffff;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            max-width: 400px;
+            border-left: 5px solid #007bff;
+            margin: 20px;
+        }
 
-  <style>
-    :root {
-      --accent-color: #ff0000; 
-      --bg-dark: #0e0e0e;
-      --nav-bg: rgba(11, 11, 11, 0.95);
-      --card-bg: #1a1a1a;
-    }
+        .announcement-header {
+            font-weight: bold;
+            color: #333;
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+        }
 
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', Roboto, Arial, sans-serif;
-      background: var(--bg-dark);
-      color: white;
-      scroll-behavior: smooth;
-      overflow-x: hidden;
-    }
+        .announcement-body {
+            color: #555;
+            line-height: 1.5;
+            font-size: 0.95rem;
+        }
 
-    /* NAVBAR */
-    nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 10px 40px;
-      background: var(--nav-bg);
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      border-bottom: 1px solid #222;
-      height: 60px;
-    }
+        /* Das Fenster für die relative Zeitangabe */
+        .time-badge {
+            display: inline-flex;
+            align-items: center;
+            font-size: 0.75rem;
+            color: #777;
+            background: #f1f3f4;
+            padding: 5px 10px;
+            border-radius: 6px;
+            margin-top: 15px;
+            font-weight: 500;
+        }
 
-    nav img {
-      height: 45px;
-      width: auto;
-      display: block;
-    }
-
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 20px;
-      margin: 0;
-      padding: 0;
-    }
-
-    nav ul li a {
-      color: #ccc;
-      text-decoration: none;
-      font-weight: bold;
-      font-size: 0.95rem;
-      transition: 0.3s;
-    }
-
-    nav ul li a:hover {
-      color: var(--accent-color);
-    }
-
-    /* STARTBEREICH */
-    #start {
-      height: 100vh;
-      height: 100svh; 
-      width: 100%;
-      background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('hintergrund.png');
-      background-size: cover;
-      background-position: center center;
-      background-repeat: no-repeat;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 0 20px;
-      box-sizing: border-box;
-    }
-
-    #start h1 {
-      font-size: clamp(1.8rem, 10vw, 3.5rem);
-      margin: 0 0 10px 0;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      text-shadow: 0px 4px 10px rgba(0,0,0,0.9);
-    }
-
-    #start p {
-      font-size: clamp(1rem, 4vw, 1.4rem);
-      color: #ddd;
-      margin: 0;
-      text-shadow: 0px 2px 5px rgba(0,0,0,0.9);
-    }
-
-    /* NEWS SEKTION */
-    section {
-      padding: 60px 20px;
-      max-width: 800px;
-      margin: auto;
-      scroll-margin-top: 70px;
-    }
-
-    section h2 {
-      font-size: 1.8rem;
-      border-left: 4px solid var(--accent-color);
-      padding-left: 15px;
-      margin-bottom: 20px;
-      text-transform: uppercase;
-    }
-
-    .news-container {
-      background: var(--card-bg);
-      border-radius: 12px;
-      padding: 30px 15px;
-      margin-top: 20px;
-      border: 2px solid var(--accent-color);
-      text-align: center;
-      box-shadow: 0 0 20px rgba(255, 0, 0, 0.2);
-    }
-
-    .news-logo {
-      height: 70px;
-      width: auto;
-      margin-bottom: 15px;
-      border-radius: 50%;
-      border: 2px solid #333;
-    }
-
-    .news-container h3 {
-      color: var(--accent-color);
-      /* Dynamische Schriftgröße: Verkleinert sich auf Handys automatisch */
-      font-size: clamp(1.4rem, 8vw, 2.2rem); 
-      margin: 10px 0;
-      text-transform: uppercase;
-      word-wrap: break-word; /* Verhindert das Herausragen bei extrem langen Wörtern */
-    }
-
-    .news-details {
-      font-size: clamp(1rem, 4vw, 1.2rem);
-      line-height: 1.8;
-      color: #fff;
-    }
-
-    .news-details strong {
-      color: var(--accent-color);
-    }
-
-    footer {
-      text-align: center;
-      padding: 40px 20px;
-      background: #0b0b0b;
-      color: #555;
-      font-size: 0.85rem;
-      border-top: 1px solid #222;
-    }
-
-    /* HANDY-ANPASSUNGEN */
-    @media (max-width: 768px) {
-      nav {
-        padding: 10px 20px;
-        flex-direction: column;
-        height: auto;
-      }
-      nav img { margin-bottom: 10px; }
-      nav ul { gap: 15px; justify-content: center; width: 100%; padding-bottom: 5px; }
-      
-      #start {
-        background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('hintergrund-handy.png'), url('hintergrund.png');
-      }
-      
-      section {
-        padding: 40px 15px;
-      }
-    }
-  </style>
+        .time-badge::before {
+            content: "🕒";
+            margin-right: 5px;
+            font-size: 0.8rem;
+        }
+    </style>
 </head>
-
 <body>
 
-<nav>
-  <a href="#start">
-    <img src="logo.jpeg" alt="Russian Wolves Logo">
-  </a>
-  <ul>
-    <li><a href="#start">Start</a></li>
-    <li><a href="#news">News</a></li>
-  </ul>
-</nav>
-
-<div id="start">
-  <h1>Russian Wolves Regnitztal</h1>
-  <p>Loyalität • Stärke • Gemeinschaft</p>
+<div class="announcement-card">
+    <div class="announcement-header">
+        Wichtige Ankündigung
+    </div>
+    <div class="announcement-body">
+        Dies ist der Text deiner Ankündigung von heute. Das System erkennt automatisch, wie viel Zeit seit der Erstellung vergangen ist.
+    </div>
+    
+    <div id="time-ago" class="time-badge" data-timestamp="2026-01-19T17:30:00Z">
+        Wird berechnet...
+    </div>
 </div>
 
-<section id="news">
-  <h2>Aktuelle News</h2>
-  <div class="news-container">
-    <img src="logo.jpeg" alt="Logo" class="news-logo">
-    <h3>Eröffnungsparty</h3>
-    <div class="news-details">
-      📅 <strong>Datum:</strong> 09.05.2026<br>
-      📍 <strong>Standort:</strong> Motorradfreunde Bamberg - Kramersfeld <br>
-      🍖 <strong>Special:</strong> Für Essen und Trinken ist gesorgt!
-    </div>
-  </div>
-</section>
+<script>
+    function updateRelativeTime() {
+        const timeElement = document.getElementById('time-ago');
+        const timestampStr = timeElement.getAttribute('data-timestamp');
+        const timestamp = new Date(timestampStr);
+        const now = new Date();
+        
+        // Differenz in Sekunden
+        const diffInSeconds = Math.floor((now - timestamp) / 1000);
 
-<footer>
-  &copy; 2026 Russian Wolves Regnitztal
-</footer>
+        let displayString = "";
+
+        if (diffInSeconds < 0) {
+            displayString = "Gerade eben";
+        } else if (diffInSeconds < 60) {
+            displayString = "Gerade eben";
+        } else if (diffInSeconds < 3600) {
+            const mins = Math.floor(diffInSeconds / 60);
+            displayString = `Vor ${mins} ${mins === 1 ? 'Minute' : 'Minuten'}`;
+        } else if (diffInSeconds < 86400) {
+            const hours = Math.floor(diffInSeconds / 3600);
+            displayString = `Vor ${hours} ${hours === 1 ? 'Stunde' : 'Stunden'}`;
+        } else if (diffInSeconds < 2592000) {
+            const days = Math.floor(diffInSeconds / 86400);
+            displayString = `Vor ${days} ${days === 1 ? 'Tag' : 'Tagen'}`;
+        } else {
+            const months = Math.floor(diffInSeconds / 2592000);
+            displayString = `Vor ${months} ${months === 1 ? 'Monat' : 'Monaten'}`;
+        }
+
+        timeElement.innerText = displayString;
+    }
+
+    // Initialer Aufruf
+    updateRelativeTime();
+    
+    // Alle 60 Sekunden prüfen, um die Zeit "live" zu halten
+    setInterval(updateRelativeTime, 60000);
+</script>
 
 </body>
 </html>
