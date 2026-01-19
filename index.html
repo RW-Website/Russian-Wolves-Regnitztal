@@ -3,15 +3,22 @@
 <head>
   <meta charset="UTF-8">
   <title>Russian Wolves Regnitztal</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
   <style>
+    :root {
+      --accent-color: #00aaff;
+      --bg-dark: #0e0e0e;
+      --nav-bg: rgba(11, 11, 11, 0.95);
+    }
+
     body {
       margin: 0;
-      font-family: 'Segoe UI', Arial, sans-serif;
-      background: #0e0e0e;
+      font-family: 'Segoe UI', Roboto, Arial, sans-serif;
+      background: var(--bg-dark);
       color: white;
       scroll-behavior: smooth;
+      overflow-x: hidden; /* Verhindert seitliches Wackeln am Handy */
     }
 
     /* NAVBAR */
@@ -20,21 +27,24 @@
       align-items: center;
       justify-content: space-between;
       padding: 10px 40px;
-      background: rgba(11, 11, 11, 0.95);
+      background: var(--nav-bg);
       position: sticky;
       top: 0;
       z-index: 1000;
       border-bottom: 1px solid #222;
+      height: 60px;
     }
 
     nav img {
-      height: 50px;
+      height: 45px;
+      width: auto;
+      display: block;
     }
 
     nav ul {
       list-style: none;
       display: flex;
-      gap: 25px;
+      gap: 20px;
       margin: 0;
       padding: 0;
     }
@@ -43,95 +53,104 @@
       color: #ccc;
       text-decoration: none;
       font-weight: bold;
+      font-size: 0.95rem;
       transition: 0.3s;
     }
 
     nav ul li a:hover {
-      color: #00aaff;
+      color: var(--accent-color);
     }
 
-    /* MOBILES MENÜ (Standardmäßig versteckt) */
-    .menu-toggle {
-      display: none;
-      flex-direction: column;
-      cursor: pointer;
-      gap: 5px;
-    }
-
-    .menu-toggle span {
-      width: 25px;
-      height: 3px;
-      background: white;
-      border-radius: 2px;
-    }
-
-    /* STARTBEREICH */
+    /* STARTBEREICH (Optimiert für Handy) */
     #start {
+      /* SVH sorgt dafür, dass die Browser-Leiste am Handy nichts abschneidet */
       height: 100vh;
-      background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('hintergrund.png');
+      height: 100svh; 
+      width: 100%;
+      
+      /* Hintergrund-Einstellungen */
+      background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('hintergrund.png');
       background-size: cover;
-      background-position: center;
+      background-position: center center;
+      background-repeat: no-repeat;
+      
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       text-align: center;
       padding: 0 20px;
+      box-sizing: border-box;
     }
 
     #start h1 {
-      font-size: clamp(2rem, 8vw, 4rem); /* Passt Schriftgröße automatisch an */
-      margin-bottom: 10px;
+      font-size: clamp(1.8rem, 10vw, 3.5rem);
+      margin: 0 0 10px 0;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    #start p {
+      font-size: clamp(1rem, 4vw, 1.4rem);
+      color: #ddd;
+      margin: 0;
     }
 
     /* SECTIONS */
     section {
       padding: 80px 20px;
-      max-width: 900px;
+      max-width: 800px;
       margin: auto;
-      scroll-margin-top: 70px;
+      scroll-margin-top: 70px; /* Abstand beim Hinspringen */
     }
 
-    /* HANDY-OPTIMIERUNG (Media Query) */
+    section h2 {
+      font-size: 2rem;
+      border-left: 4px solid var(--accent-color);
+      padding-left: 15px;
+      margin-bottom: 20px;
+    }
+
+    section p {
+      color: #bbb;
+      line-height: 1.8;
+      font-size: 1.05rem;
+    }
+
+    footer {
+      text-align: center;
+      padding: 40px 20px;
+      background: #0b0b0b;
+      color: #555;
+      font-size: 0.85rem;
+      border-top: 1px solid #222;
+    }
+
+    /* HANDY-ANPASSUNGEN */
     @media (max-width: 768px) {
       nav {
         padding: 10px 20px;
-      }
-
-      /* Verstecke das normale Menü und staple es */
-      nav ul {
-        display: none; /* Hier könnte man mit JS ein Toggle bauen, vorerst machen wir es simpel */
         flex-direction: column;
-        position: absolute;
-        top: 70px;
-        left: 0;
-        width: 100%;
-        background: #0b0b0b;
-        padding: 20px 0;
-        text-align: center;
-        border-bottom: 1px solid #222;
+        height: auto;
       }
 
-      /* Zeige das Menü, wenn man eine Klasse hinzufügt (optional für später) 
-         Für eine einfache Lösung ohne JS stapeln wir die Links einfach untereinander: */
-      nav {
-        flex-wrap: wrap;
+      nav img {
+        margin-bottom: 10px;
       }
 
       nav ul {
-        display: flex;
-        position: static;
+        gap: 15px;
+        justify-content: center;
         width: 100%;
-        gap: 10px;
-        padding: 15px 0 5px 0;
+        padding-bottom: 5px;
       }
 
-      nav ul li {
-        width: 100%;
+      nav ul li a {
+        font-size: 0.85rem;
       }
 
-      #start h1 {
-        font-size: 2.5rem;
+      section {
+        padding: 60px 20px;
       }
     }
   </style>
@@ -143,7 +162,6 @@
   <a href="#start">
     <img src="logo.jpeg" alt="Russian Wolves Logo">
   </a>
-  
   <ul>
     <li><a href="#start">Start</a></li>
     <li><a href="#geschichte">Geschichte</a></li>
@@ -154,22 +172,34 @@
 
 <div id="start">
   <h1>Russian Wolves Regnitztal</h1>
-  <p>Loyalität | Stärke | Gemeinschaft</p>
+  <p>Loyalität • Stärke • Gemeinschaft</p>
 </div>
 
 <section id="geschichte">
   <h2>Unsere Geschichte</h2>
-  <p>Die Russian Wolves Regnitztal stehen für Zusammenhalt und Loyalität.</p>
+  <p>
+    Die Russian Wolves Regnitztal stehen für echten Zusammenhalt und unerschütterliche Loyalität. 
+    Was als kleine Gemeinschaft begann, ist heute ein festes Rudel, in dem Respekt und 
+    Leidenschaft an erster Stelle stehen.
+  </p>
 </section>
 
 <section id="team">
   <h2>Unser Team</h2>
-  <p>Unser Team besteht aus engagierten Mitgliedern, die gemeinsam für Stärke stehen.</p>
+  <p>
+    Unser Team besteht aus Spielern und Mitgliedern, die gemeinsam für Einheit stehen. 
+    Wir fördern den Austausch, unterstützen uns gegenseitig und wachsen mit jeder 
+    Herausforderung weiter zusammen.
+  </p>
 </section>
 
 <section id="kontakt">
   <h2>Kontakt</h2>
-  <p>📧 E-Mail: kontakt@russian-wolves.de</p>
+  <p>
+    Du hast Fragen oder möchtest Teil des Rudels werden?<br><br>
+    📧 <strong>E-Mail:</strong> <a href="mailto:kontakt@russian-wolves.de" style="color: var(--accent-color); text-decoration: none;">kontakt@russian-wolves.de</a><br>
+    💬 <strong>Discord:</strong> folgt bald
+  </p>
 </section>
 
 <footer>
