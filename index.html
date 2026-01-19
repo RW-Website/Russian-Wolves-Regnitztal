@@ -67,12 +67,11 @@
       height: 100svh; 
       width: 100%;
       
-      /* Optimierter Hintergrund für weniger Beschnitt */
+      /* Standard-Hintergrund für Desktop */
       background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('hintergrund.png');
       background-size: cover;
       background-position: center center;
       background-repeat: no-repeat;
-      /* Fixiertes Background-Attachment macht auf Handys oft Probleme, daher scroll */
       background-attachment: scroll; 
       
       display: flex;
@@ -148,9 +147,12 @@
         padding-bottom: 5px;
       }
 
-      /* Verkleinert den Zoom-Effekt auf dem Handy etwas */
+      /* SPEZIELLES HANDY-BILD LADEN */
       #start {
-        background-position: center 20%; 
+        /* Hier musst du den Namen deines Handy-Bildes eintragen */
+        background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('hintergrund-handy.png');
+        background-size: cover;
+        background-position: center center;
       }
 
       section {
