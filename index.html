@@ -8,10 +8,10 @@
   <style>
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
+      font-family: 'Segoe UI', Arial, sans-serif;
       background: #0e0e0e;
       color: white;
-      scroll-behavior: smooth; /* Sorgt für weiches Scrollen */
+      scroll-behavior: smooth;
     }
 
     /* NAVBAR */
@@ -19,17 +19,17 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 15px 40px;
-      background: #0b0b0b;
+      padding: 10px 40px;
+      background: rgba(11, 11, 11, 0.95); /* Leicht transparent */
       position: sticky;
       top: 0;
       z-index: 1000;
-      border-bottom: 1px solid #222; /* Dezente Trennlinie */
+      border-bottom: 1px solid #222;
     }
 
     nav img {
-      height: 45px;
-      display: block; /* Verhindert kleine Abstände unter dem Bild */
+      height: 50px;
+      display: block;
     }
 
     nav ul {
@@ -44,45 +44,59 @@
       color: #ccc;
       text-decoration: none;
       font-weight: bold;
-      transition: 0.3s;
+      transition: color 0.3s;
     }
 
     nav ul li a:hover {
-      color: white;
+      color: #00aaff; /* Ein Akzent-Blau beim Drüberfahren */
     }
 
-    /* Damit die Überschriften nicht hinter der Navigationsleiste verschwinden */
-    section {
-      scroll-margin-top: 80px; 
-      padding: 100px 20px;
-      max-width: 900px;
-      margin: auto;
-    }
-
-    /* STARTBEREICH (Platzhalter) */
+    /* STARTBEREICH MIT HINTERGRUNDBILD */
     #start {
-      height: 80vh; /* Etwas kleiner, damit man sieht, dass es darunter weitergeht */
+      height: 100vh;
+      background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('hintergrund.png');
+      background-size: cover;
+      background-position: center;
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
       text-align: center;
     }
 
+    #start h1 {
+      font-size: 3rem;
+      text-shadow: 2px 2px 10px rgba(0,0,0,0.8);
+      margin: 0;
+    }
+
+    /* SECTIONS */
+    section {
+      padding: 100px 20px;
+      max-width: 900px;
+      margin: auto;
+      /* Verhindert, dass die Navigationsleiste die Überschrift verdeckt */
+      scroll-margin-top: 80px; 
+    }
+
     section h2 {
-      margin-bottom: 15px;
-      color: #fff;
+      border-left: 4px solid #00aaff;
+      padding-left: 15px;
+      margin-bottom: 20px;
     }
 
     section p {
       color: #ccc;
-      line-height: 1.6;
+      line-height: 1.8;
+      font-size: 1.1rem;
     }
 
     footer {
       text-align: center;
-      padding: 30px;
+      padding: 40px;
       background: #0b0b0b;
-      color: #666;
+      color: #555;
+      font-size: 0.9rem;
     }
   </style>
 </head>
@@ -102,7 +116,8 @@
 </nav>
 
 <div id="start">
-  <h1>Willkommen bei den Russian Wolves</h1>
+  <h1>Russian Wolves Regnitztal</h1>
+  <p style="color: white; font-size: 1.2rem;">Loyalität | Stärke | Gemeinschaft</p>
 </div>
 
 <section id="geschichte">
@@ -110,7 +125,7 @@
   <p>
     Die Russian Wolves Regnitztal stehen für Zusammenhalt,
     Loyalität und Leidenschaft. Gegründet aus echter Gemeinschaft
-    und Respekt füreinander.
+    und Respekt füreinander, sind wir mehr als nur ein Team – wir sind ein Rudel.
   </p>
 </section>
 
@@ -118,20 +133,21 @@
   <h2>Unser Team</h2>
   <p>
     Unser Team besteht aus engagierten Mitgliedern,
-    die gemeinsam für Stärke und Einheit stehen.
+    die gemeinsam für Stärke und Einheit stehen. Jeder Einzelne trägt dazu bei,
+    dass die Russian Wolves stetig wachsen.
   </p>
 </section>
 
 <section id="kontakt">
   <h2>Kontakt</h2>
   <p>
-    📧 E-Mail: kontakt@russian-wolves.de<br>
-    💬 Discord: folgt bald
+    📧 <strong>E-Mail:</strong> kontakt@russian-wolves.de<br><br>
+    💬 <strong>Discord:</strong> folgt bald
   </p>
 </section>
 
 <footer>
-  © 2026 Russian Wolves Regnitztal
+  &copy; 2026 Russian Wolves Regnitztal
 </footer>
 
 </body>
