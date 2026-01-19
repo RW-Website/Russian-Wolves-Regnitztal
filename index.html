@@ -11,6 +11,7 @@
       font-family: Arial, sans-serif;
       background: #0e0e0e;
       color: white;
+      scroll-behavior: smooth;
     }
 
     /* NAVBAR */
@@ -41,33 +42,20 @@
       color: #ccc;
       text-decoration: none;
       font-weight: bold;
-      transition: color 0.2s;
     }
 
     nav ul li a:hover {
       color: white;
     }
 
-    /* HEADER */
-    header {
-      padding: 80px 20px;
-      text-align: center;
-      background: linear-gradient(135deg, #111, #1f1f1f);
-    }
-
-    header h1 {
-      font-size: 3rem;
-      margin-bottom: 10px;
-    }
-
-    header p {
-      color: #aaa;
-      font-size: 1.2rem;
+    /* LEERER STARTBEREICH */
+    #start {
+      height: 100vh;
     }
 
     /* SECTIONS */
     section {
-      padding: 80px 20px;
+      padding: 100px 20px;
       max-width: 900px;
       margin: auto;
     }
@@ -81,7 +69,6 @@
       line-height: 1.6;
     }
 
-    /* FOOTER */
     footer {
       text-align: center;
       padding: 30px;
@@ -95,7 +82,9 @@
 
 <!-- NAVIGATION -->
 <nav>
-  <img src="logo.jpg" alt="Russian Wolves Logo">
+  <a href="#start">
+    <img src="logo.jpg" alt="Russian Wolves Logo">
+  </a>
   <ul>
     <li><a href="#start">Start</a></li>
     <li><a href="#geschichte">Geschichte</a></li>
@@ -104,11 +93,8 @@
   </ul>
 </nav>
 
-<!-- START -->
-<header id="start">
-  <h1>Russian Wolves Regnitztal</h1>
-  <p>Offizielle Website</p>
-</header>
+<!-- LEERER HOMESCREEN -->
+<div id="start"></div>
 
 <!-- GESCHICHTE -->
 <section id="geschichte">
