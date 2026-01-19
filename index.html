@@ -3,105 +3,135 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vollständige Ankündigung</title>
     <style>
+        /* Grundstyling für den Hintergrund */
+        body {
+            background-color: #f4f7f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        /* Die Ankündigungskarte */
         .announcement-card {
             background-color: #ffffff;
             border-radius: 12px;
-            padding: 20px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            max-width: 400px;
-            border-left: 5px solid #007bff;
-            margin: 20px;
+            padding: 24px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            max-width: 450px;
+            width: 90%;
+            border-left: 6px solid #007bff; /* Blauer Akzentbalken */
+            position: relative;
+            transition: transform 0.2s ease;
         }
 
+        .announcement-card:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Header Bereich */
         .announcement-header {
-            font-weight: bold;
-            color: #333;
-            font-size: 1.1rem;
-            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            font-weight: 700;
+            color: #2c3e50;
+            font-size: 1.2rem;
+            margin-bottom: 12px;
         }
 
+        .announcement-header i {
+            margin-right: 10px;
+            color: #007bff;
+        }
+
+        /* Text der Ankündigung */
         .announcement-body {
-            color: #555;
-            line-height: 1.5;
-            font-size: 0.95rem;
+            color: #5d6d7e;
+            line-height: 1.6;
+            font-size: 1rem;
+            margin-bottom: 20px;
         }
 
-        /* Das Fenster für die relative Zeitangabe */
+        /* Das Zeit-Fenster (Badge) */
         .time-badge {
             display: inline-flex;
             align-items: center;
             font-size: 0.75rem;
-            color: #777;
-            background: #f1f3f4;
-            padding: 5px 10px;
-            border-radius: 6px;
-            margin-top: 15px;
-            font-weight: 500;
+            color: #7f8c8d;
+            background: #f8f9fa;
+            padding: 6px 12px;
+            border-radius: 50px;
+            font-weight: 600;
+            border: 1px solid #e9ecef;
         }
 
+        /* Icon im Zeit-Fenster */
         .time-badge::before {
             content: "🕒";
-            margin-right: 5px;
-            font-size: 0.8rem;
+            margin-right: 6px;
+            font-size: 0.85rem;
         }
     </style>
 </head>
 <body>
 
-<div class="announcement-card">
-    <div class="announcement-header">
-        Wichtige Ankündigung
-    </div>
-    <div class="announcement-body">
-        Dies ist der Text deiner Ankündigung von heute. Das System erkennt automatisch, wie viel Zeit seit der Erstellung vergangen ist.
-    </div>
-    
-    <div id="time-ago" class="time-badge" data-timestamp="2026-01-19T17:30:00Z">
-        Wird berechnet...
-    </div>
-</div>
-
-<script>
-    function updateRelativeTime() {
-        const timeElement = document.getElementById('time-ago');
-        const timestampStr = timeElement.getAttribute('data-timestamp');
-        const timestamp = new Date(timestampStr);
-        const now = new Date();
+    <div class="announcement-card">
+        <div class="announcement-header">
+            Wichtige Mitteilung
+        </div>
+        <div class="announcement-body">
+            Dies ist die kombinierte Ankündigung mit allen Funktionen. Der blaue Balken links hebt die Wichtigkeit hervor, und unten siehst du das Zeit-Fenster, das sich automatisch anpasst, je nachdem wie lange dieser Post her ist.
+        </div>
         
-        // Differenz in Sekunden
-        const diffInSeconds = Math.floor((now - timestamp) / 1000);
+        <div id="time-ago" class="time-badge" data-timestamp="2026-01-19T18:00:00Z">
+            Wird berechnet...
+        </div>
+    </div>
 
-        let displayString = "";
+    <script>
+        function updateRelativeTime() {
+            const timeElement = document.getElementById('time-ago');
+            const timestampStr = timeElement.getAttribute('data-timestamp');
+            const timestamp = new Date(timestampStr);
+            const now = new Date();
+            
+            // Differenz in Sekunden
+            const diffInSeconds = Math.floor((now - timestamp) / 1000);
 
-        if (diffInSeconds < 0) {
-            displayString = "Gerade eben";
-        } else if (diffInSeconds < 60) {
-            displayString = "Gerade eben";
-        } else if (diffInSeconds < 3600) {
-            const mins = Math.floor(diffInSeconds / 60);
-            displayString = `Vor ${mins} ${mins === 1 ? 'Minute' : 'Minuten'}`;
-        } else if (diffInSeconds < 86400) {
-            const hours = Math.floor(diffInSeconds / 3600);
-            displayString = `Vor ${hours} ${hours === 1 ? 'Stunde' : 'Stunden'}`;
-        } else if (diffInSeconds < 2592000) {
-            const days = Math.floor(diffInSeconds / 86400);
-            displayString = `Vor ${days} ${days === 1 ? 'Tag' : 'Tagen'}`;
-        } else {
-            const months = Math.floor(diffInSeconds / 2592000);
-            displayString = `Vor ${months} ${months === 1 ? 'Monat' : 'Monaten'}`;
+            let displayString = "";
+
+            if (diffInSeconds < 60) {
+                displayString = "Gerade eben";
+            } else if (diffInSeconds < 3600) {
+                const mins = Math.floor(diffInSeconds / 60);
+                displayString = `Vor ${mins} ${mins === 1 ? 'Minute' : 'Minuten'}`;
+            } else if (diffInSeconds < 86400) {
+                const hours = Math.floor(diffInSeconds / 3600);
+                displayString = `Vor ${hours} ${hours === 1 ? 'Stunde' : 'Stunden'}`;
+            } else if (diffInSeconds < 2592000) {
+                const days = Math.floor(diffInSeconds / 86400);
+                displayString = `Vor ${days} ${days === 1 ? 'Tag' : 'Tagen'}`;
+            } else if (diffInSeconds < 31104000) {
+                const months = Math.floor(diffInSeconds / 2592000);
+                displayString = `Vor ${months} ${months === 1 ? 'Monat' : 'Monaten'}`;
+            } else {
+                const years = Math.floor(diffInSeconds / 31104000);
+                displayString = `Vor ${years} ${years === 1 ? 'Jahr' : 'Jahren'}`;
+            }
+
+            timeElement.innerText = displayString;
         }
 
-        timeElement.innerText = displayString;
-    }
-
-    // Initialer Aufruf
-    updateRelativeTime();
-    
-    // Alle 60 Sekunden prüfen, um die Zeit "live" zu halten
-    setInterval(updateRelativeTime, 60000);
-</script>
+        // Sofort ausführen
+        updateRelativeTime();
+        
+        // Jede Minute aktualisieren
+        setInterval(updateRelativeTime, 60000);
+    </script>
 
 </body>
 </html>
