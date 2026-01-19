@@ -4,34 +4,143 @@
   <meta charset="UTF-8">
   <title>Russian Wolves Regnitztal</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <style>
     body {
       margin: 0;
       font-family: Arial, sans-serif;
       background: #0e0e0e;
       color: white;
-      text-align: center;
     }
+
+    /* NAVBAR */
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 15px 40px;
+      background: #0b0b0b;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    nav img {
+      height: 45px;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav ul li a {
+      color: #ccc;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.2s;
+    }
+
+    nav ul li a:hover {
+      color: white;
+    }
+
+    /* HEADER */
     header {
-      padding: 60px 20px;
+      padding: 80px 20px;
+      text-align: center;
       background: linear-gradient(135deg, #111, #1f1f1f);
     }
-    h1 {
+
+    header h1 {
       font-size: 3rem;
       margin-bottom: 10px;
     }
-    p {
-      color: #ccc;
+
+    header p {
+      color: #aaa;
       font-size: 1.2rem;
+    }
+
+    /* SECTIONS */
+    section {
+      padding: 80px 20px;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    section h2 {
+      margin-bottom: 15px;
+    }
+
+    section p {
+      color: #ccc;
+      line-height: 1.6;
+    }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 30px;
+      background: #0b0b0b;
+      color: #666;
     }
   </style>
 </head>
+
 <body>
 
-<header>
+<!-- NAVIGATION -->
+<nav>
+  <img src="logo.jpg" alt="Russian Wolves Logo">
+  <ul>
+    <li><a href="#start">Start</a></li>
+    <li><a href="#geschichte">Geschichte</a></li>
+    <li><a href="#team">Team</a></li>
+    <li><a href="#kontakt">Kontakt</a></li>
+  </ul>
+</nav>
+
+<!-- START -->
+<header id="start">
   <h1>Russian Wolves Regnitztal</h1>
   <p>Offizielle Website</p>
 </header>
+
+<!-- GESCHICHTE -->
+<section id="geschichte">
+  <h2>Unsere Geschichte</h2>
+  <p>
+    Die Russian Wolves Regnitztal stehen für Zusammenhalt,
+    Loyalität und Leidenschaft. Gegründet aus echter Gemeinschaft
+    und Respekt füreinander.
+  </p>
+</section>
+
+<!-- TEAM -->
+<section id="team">
+  <h2>Unser Team</h2>
+  <p>
+    Unser Team besteht aus engagierten Mitgliedern,
+    die gemeinsam für Stärke und Einheit stehen.
+  </p>
+</section>
+
+<!-- KONTAKT -->
+<section id="kontakt">
+  <h2>Kontakt</h2>
+  <p>
+    📧 E-Mail: kontakt@russian-wolves.de<br>
+    💬 Discord: folgt bald
+  </p>
+</section>
+
+<footer>
+  © 2026 Russian Wolves Regnitztal
+</footer>
 
 </body>
 </html>
