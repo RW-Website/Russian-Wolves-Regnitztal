@@ -20,7 +20,7 @@
       align-items: center;
       justify-content: space-between;
       padding: 10px 40px;
-      background: rgba(11, 11, 11, 0.95); /* Leicht transparent */
+      background: rgba(11, 11, 11, 0.95);
       position: sticky;
       top: 0;
       z-index: 1000;
@@ -29,7 +29,6 @@
 
     nav img {
       height: 50px;
-      display: block;
     }
 
     nav ul {
@@ -44,14 +43,29 @@
       color: #ccc;
       text-decoration: none;
       font-weight: bold;
-      transition: color 0.3s;
+      transition: 0.3s;
     }
 
     nav ul li a:hover {
-      color: #00aaff; /* Ein Akzent-Blau beim Drüberfahren */
+      color: #00aaff;
     }
 
-    /* STARTBEREICH MIT HINTERGRUNDBILD */
+    /* MOBILES MENÜ (Standardmäßig versteckt) */
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      gap: 5px;
+    }
+
+    .menu-toggle span {
+      width: 25px;
+      height: 3px;
+      background: white;
+      border-radius: 2px;
+    }
+
+    /* STARTBEREICH */
     #start {
       height: 100vh;
       background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('hintergrund.png');
@@ -62,41 +76,63 @@
       align-items: center;
       justify-content: center;
       text-align: center;
+      padding: 0 20px;
     }
 
     #start h1 {
-      font-size: 3rem;
-      text-shadow: 2px 2px 10px rgba(0,0,0,0.8);
-      margin: 0;
+      font-size: clamp(2rem, 8vw, 4rem); /* Passt Schriftgröße automatisch an */
+      margin-bottom: 10px;
     }
 
     /* SECTIONS */
     section {
-      padding: 100px 20px;
+      padding: 80px 20px;
       max-width: 900px;
       margin: auto;
-      /* Verhindert, dass die Navigationsleiste die Überschrift verdeckt */
-      scroll-margin-top: 80px; 
+      scroll-margin-top: 70px;
     }
 
-    section h2 {
-      border-left: 4px solid #00aaff;
-      padding-left: 15px;
-      margin-bottom: 20px;
-    }
+    /* HANDY-OPTIMIERUNG (Media Query) */
+    @media (max-width: 768px) {
+      nav {
+        padding: 10px 20px;
+      }
 
-    section p {
-      color: #ccc;
-      line-height: 1.8;
-      font-size: 1.1rem;
-    }
+      /* Verstecke das normale Menü und staple es */
+      nav ul {
+        display: none; /* Hier könnte man mit JS ein Toggle bauen, vorerst machen wir es simpel */
+        flex-direction: column;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background: #0b0b0b;
+        padding: 20px 0;
+        text-align: center;
+        border-bottom: 1px solid #222;
+      }
 
-    footer {
-      text-align: center;
-      padding: 40px;
-      background: #0b0b0b;
-      color: #555;
-      font-size: 0.9rem;
+      /* Zeige das Menü, wenn man eine Klasse hinzufügt (optional für später) 
+         Für eine einfache Lösung ohne JS stapeln wir die Links einfach untereinander: */
+      nav {
+        flex-wrap: wrap;
+      }
+
+      nav ul {
+        display: flex;
+        position: static;
+        width: 100%;
+        gap: 10px;
+        padding: 15px 0 5px 0;
+      }
+
+      nav ul li {
+        width: 100%;
+      }
+
+      #start h1 {
+        font-size: 2.5rem;
+      }
     }
   </style>
 </head>
@@ -107,6 +143,7 @@
   <a href="#start">
     <img src="logo.jpeg" alt="Russian Wolves Logo">
   </a>
+  
   <ul>
     <li><a href="#start">Start</a></li>
     <li><a href="#geschichte">Geschichte</a></li>
@@ -117,33 +154,22 @@
 
 <div id="start">
   <h1>Russian Wolves Regnitztal</h1>
-  <p style="color: white; font-size: 1.2rem;">Loyalität | Stärke | Gemeinschaft</p>
+  <p>Loyalität | Stärke | Gemeinschaft</p>
 </div>
 
 <section id="geschichte">
   <h2>Unsere Geschichte</h2>
-  <p>
-    Die Russian Wolves Regnitztal stehen für Zusammenhalt,
-    Loyalität und Leidenschaft. Gegründet aus echter Gemeinschaft
-    und Respekt füreinander, sind wir mehr als nur ein Team – wir sind ein Rudel.
-  </p>
+  <p>Die Russian Wolves Regnitztal stehen für Zusammenhalt und Loyalität.</p>
 </section>
 
 <section id="team">
   <h2>Unser Team</h2>
-  <p>
-    Unser Team besteht aus engagierten Mitgliedern,
-    die gemeinsam für Stärke und Einheit stehen. Jeder Einzelne trägt dazu bei,
-    dass die Russian Wolves stetig wachsen.
-  </p>
+  <p>Unser Team besteht aus engagierten Mitgliedern, die gemeinsam für Stärke stehen.</p>
 </section>
 
 <section id="kontakt">
   <h2>Kontakt</h2>
-  <p>
-    📧 <strong>E-Mail:</strong> kontakt@russian-wolves.de<br><br>
-    💬 <strong>Discord:</strong> folgt bald
-  </p>
+  <p>📧 E-Mail: kontakt@russian-wolves.de</p>
 </section>
 
 <footer>
