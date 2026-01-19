@@ -11,7 +11,7 @@
       font-family: Arial, sans-serif;
       background: #0e0e0e;
       color: white;
-      scroll-behavior: smooth;
+      scroll-behavior: smooth; /* Sorgt für weiches Scrollen */
     }
 
     /* NAVBAR */
@@ -24,10 +24,12 @@
       position: sticky;
       top: 0;
       z-index: 1000;
+      border-bottom: 1px solid #222; /* Dezente Trennlinie */
     }
 
     nav img {
       height: 45px;
+      display: block; /* Verhindert kleine Abstände unter dem Bild */
     }
 
     nav ul {
@@ -42,26 +44,33 @@
       color: #ccc;
       text-decoration: none;
       font-weight: bold;
+      transition: 0.3s;
     }
 
     nav ul li a:hover {
       color: white;
     }
 
-    /* LEERER STARTBEREICH */
-    #start {
-      height: 100vh;
-    }
-
-    /* SECTIONS */
+    /* Damit die Überschriften nicht hinter der Navigationsleiste verschwinden */
     section {
+      scroll-margin-top: 80px; 
       padding: 100px 20px;
       max-width: 900px;
       margin: auto;
     }
 
+    /* STARTBEREICH (Platzhalter) */
+    #start {
+      height: 80vh; /* Etwas kleiner, damit man sieht, dass es darunter weitergeht */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
     section h2 {
       margin-bottom: 15px;
+      color: #fff;
     }
 
     section p {
@@ -80,10 +89,9 @@
 
 <body>
 
-<!-- NAVIGATION -->
 <nav>
   <a href="#start">
-    <img src="logo.jpg" alt="Russian Wolves Logo">
+    <img src="logo.jpeg" alt="Russian Wolves Logo">
   </a>
   <ul>
     <li><a href="#start">Start</a></li>
@@ -93,10 +101,10 @@
   </ul>
 </nav>
 
-<!-- LEERER HOMESCREEN -->
-<div id="start"></div>
+<div id="start">
+  <h1>Willkommen bei den Russian Wolves</h1>
+</div>
 
-<!-- GESCHICHTE -->
 <section id="geschichte">
   <h2>Unsere Geschichte</h2>
   <p>
@@ -106,7 +114,6 @@
   </p>
 </section>
 
-<!-- TEAM -->
 <section id="team">
   <h2>Unser Team</h2>
   <p>
@@ -115,7 +122,6 @@
   </p>
 </section>
 
-<!-- KONTAKT -->
 <section id="kontakt">
   <h2>Kontakt</h2>
   <p>
