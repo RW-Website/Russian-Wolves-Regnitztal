@@ -18,7 +18,7 @@
       background: var(--bg-dark);
       color: white;
       scroll-behavior: smooth;
-      overflow-x: hidden; /* Verhindert seitliches Wackeln am Handy */
+      overflow-x: hidden;
     }
 
     /* NAVBAR */
@@ -61,18 +61,19 @@
       color: var(--accent-color);
     }
 
-    /* STARTBEREICH (Optimiert für Handy) */
+    /* STARTBEREICH */
     #start {
-      /* SVH sorgt dafür, dass die Browser-Leiste am Handy nichts abschneidet */
       height: 100vh;
       height: 100svh; 
       width: 100%;
       
-      /* Hintergrund-Einstellungen */
+      /* Optimierter Hintergrund für weniger Beschnitt */
       background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('hintergrund.png');
       background-size: cover;
       background-position: center center;
       background-repeat: no-repeat;
+      /* Fixiertes Background-Attachment macht auf Handys oft Probleme, daher scroll */
+      background-attachment: scroll; 
       
       display: flex;
       flex-direction: column;
@@ -88,12 +89,14 @@
       margin: 0 0 10px 0;
       text-transform: uppercase;
       letter-spacing: 2px;
+      text-shadow: 0px 4px 10px rgba(0,0,0,0.9);
     }
 
     #start p {
       font-size: clamp(1rem, 4vw, 1.4rem);
       color: #ddd;
       margin: 0;
+      text-shadow: 0px 2px 5px rgba(0,0,0,0.9);
     }
 
     /* SECTIONS */
@@ -101,7 +104,7 @@
       padding: 80px 20px;
       max-width: 800px;
       margin: auto;
-      scroll-margin-top: 70px; /* Abstand beim Hinspringen */
+      scroll-margin-top: 70px;
     }
 
     section h2 {
@@ -145,8 +148,9 @@
         padding-bottom: 5px;
       }
 
-      nav ul li a {
-        font-size: 0.85rem;
+      /* Verkleinert den Zoom-Effekt auf dem Handy etwas */
+      #start {
+        background-position: center 20%; 
       }
 
       section {
@@ -179,8 +183,7 @@
   <h2>Unsere Geschichte</h2>
   <p>
     Die Russian Wolves Regnitztal stehen für echten Zusammenhalt und unerschütterliche Loyalität. 
-    Was als kleine Gemeinschaft begann, ist heute ein festes Rudel, in dem Respekt und 
-    Leidenschaft an erster Stelle stehen.
+    Was als kleine Gemeinschaft begann, ist heute ein festes Rudel.
   </p>
 </section>
 
@@ -188,15 +191,13 @@
   <h2>Unser Team</h2>
   <p>
     Unser Team besteht aus Spielern und Mitgliedern, die gemeinsam für Einheit stehen. 
-    Wir fördern den Austausch, unterstützen uns gegenseitig und wachsen mit jeder 
-    Herausforderung weiter zusammen.
+    Wir fördern den Austausch und unterstützen uns gegenseitig.
   </p>
 </section>
 
 <section id="kontakt">
   <h2>Kontakt</h2>
   <p>
-    Du hast Fragen oder möchtest Teil des Rudels werden?<br><br>
     📧 <strong>E-Mail:</strong> <a href="mailto:kontakt@russian-wolves.de" style="color: var(--accent-color); text-decoration: none;">kontakt@russian-wolves.de</a><br>
     💬 <strong>Discord:</strong> folgt bald
   </p>
