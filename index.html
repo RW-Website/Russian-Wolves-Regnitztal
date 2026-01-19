@@ -7,7 +7,8 @@
 
   <style>
     :root {
-      --accent-color: #00aaff;
+      /* Akzentfarbe auf Rot geändert */
+      --accent-color: #ff0000; 
       --bg-dark: #0e0e0e;
       --nav-bg: rgba(11, 11, 11, 0.95);
       --card-bg: #1a1a1a;
@@ -88,7 +89,29 @@
       text-shadow: 0px 4px 10px rgba(0,0,0,0.9);
     }
 
-    /* NEWS SEKTION */
+    #start p {
+      font-size: clamp(1rem, 4vw, 1.4rem);
+      color: #ddd;
+      margin: 0;
+      text-shadow: 0px 2px 5px rgba(0,0,0,0.9);
+    }
+
+    /* NEWS SEKTION (JETZT IN ROT) */
+    section {
+      padding: 80px 20px;
+      max-width: 800px;
+      margin: auto;
+      scroll-margin-top: 70px;
+    }
+
+    section h2 {
+      font-size: 2rem;
+      border-left: 4px solid var(--accent-color);
+      padding-left: 15px;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+    }
+
     .news-container {
       background: var(--card-bg);
       border-radius: 12px;
@@ -96,7 +119,7 @@
       margin-top: 30px;
       border: 2px solid var(--accent-color);
       text-align: center;
-      box-shadow: 0 0 20px rgba(0, 170, 255, 0.2);
+      box-shadow: 0 0 20px rgba(255, 0, 0, 0.2);
     }
 
     .news-logo {
@@ -122,27 +145,6 @@
 
     .news-details strong {
       color: var(--accent-color);
-    }
-
-    /* SECTIONS */
-    section {
-      padding: 80px 20px;
-      max-width: 800px;
-      margin: auto;
-      scroll-margin-top: 70px;
-    }
-
-    section h2 {
-      font-size: 2rem;
-      border-left: 4px solid var(--accent-color);
-      padding-left: 15px;
-      margin-bottom: 20px;
-    }
-
-    section p {
-      color: #bbb;
-      line-height: 1.8;
-      font-size: 1.05rem;
     }
 
     footer {
@@ -180,9 +182,6 @@
   <ul>
     <li><a href="#start">Start</a></li>
     <li><a href="#news">News</a></li>
-    <li><a href="#geschichte">Geschichte</a></li>
-    <li><a href="#team">Team</a></li>
-    <li><a href="#kontakt">Kontakt</a></li>
   </ul>
 </nav>
 
@@ -198,32 +197,10 @@
     <h3>Eröffnungsparty</h3>
     <div class="news-details">
       📅 <strong>Datum:</strong> 09.05.2026<br>
-      📍 <strong>Standort:</strong> Motorradfreunde Bamberg - Kramersfeld <br>
+      📍 <strong>Standort:</strong> (Hier Standort eintragen)<br>
       🍖 <strong>Special:</strong> Für Essen und Trinken ist gesorgt!
     </div>
   </div>
-</section>
-
-<section id="geschichte">
-  <h2>Unsere Geschichte</h2>
-  <p>
-    Die Russian Wolves Regnitztal stehen für echten Zusammenhalt und unerschütterliche Loyalität. 
-    Was als kleine Gemeinschaft begann, ist heute ein festes Rudel.
-  </p>
-</section>
-
-<section id="team">
-  <h2>Unser Team</h2>
-  <p>
-    Unser Team besteht aus Spielern und Mitgliedern, die gemeinsam für Einheit stehen.
-  </p>
-</section>
-
-<section id="kontakt">
-  <h2>Kontakt</h2>
-  <p>
-    📧 <strong>E-Mail:</strong> <a href="mailto:kontakt@russian-wolves.de" style="color: var(--accent-color); text-decoration: none;">kontakt@russian-wolves.de</a>
-  </p>
 </section>
 
 <footer>
