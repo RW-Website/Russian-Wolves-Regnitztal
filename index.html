@@ -149,7 +149,7 @@
       color: var(--accent-color);
     }
 
-    /* NEUES ZEIT-FENSTER DESIGN */
+    /* ZEIT-FENSTER DESIGN */
     .time-badge {
       display: inline-flex;
       align-items: center;
@@ -177,27 +177,15 @@
       border-top: 1px solid #222;
     }
 
-    /* HANDY-ANPASSUNGEN */
     @media (max-width: 768px) {
-      nav {
-        padding: 10px 20px;
-        flex-direction: column;
-        height: auto;
-      }
+      nav { padding: 10px 20px; flex-direction: column; height: auto; }
       nav img { margin-bottom: 10px; }
       nav ul { gap: 15px; justify-content: center; width: 100%; padding-bottom: 5px; }
-      
-      #start {
-        background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('hintergrund-handy.png'), url('hintergrund.png');
-      }
-      
-      section {
-        padding: 40px 15px;
-      }
+      #start { background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('hintergrund-handy.png'), url('hintergrund.png'); }
+      section { padding: 40px 15px; }
     }
   </style>
 </head>
-
 <body>
 
 <nav>
@@ -222,11 +210,11 @@
     <h3>Eröffnungsparty</h3>
     <div class="news-details">
       📅 <strong>Datum:</strong> 09.05.2026<br>
-      📍 <strong>Standort:</strong> Motorradfreunde Bamberg - Kramersfeld <br>
+      📍 <strong>Standort:</strong> (Hier Standort eintragen)<br>
       🍖 <strong>Special:</strong> Für Essen und Trinken ist gesorgt!
     </div>
 
-    <div id="time-ago" class="time-badge" data-timestamp="2026-01-19T18:00:00Z">
+    <div id="time-ago" class="time-badge" data-timestamp="2026-01-19T18:30:00">
         Wird geladen...
     </div>
   </div>
@@ -246,6 +234,7 @@
         const now = new Date();
         
         const diffInSeconds = Math.floor((now - timestamp) / 1000);
+
         let displayString = "";
 
         if (diffInSeconds < 60) {
@@ -256,22 +245,17 @@
         } else if (diffInSeconds < 86400) {
             const hours = Math.floor(diffInSeconds / 3600);
             displayString = `Vor ${hours} ${hours === 1 ? 'Stunde' : 'Stunden'}`;
-        } else if (diffInSeconds < 2592000) {
+        } else {
             const days = Math.floor(diffInSeconds / 86400);
             displayString = `Vor ${days} ${days === 1 ? 'Tag' : 'Tagen'}`;
-        } else {
-            const months = Math.floor(diffInSeconds / 2592000);
-            displayString = `Vor ${months} ${months === 1 ? 'Monat' : 'Monaten'}`;
         }
 
         timeElement.innerText = displayString;
     }
 
-    // Initialer Start
     updateRelativeTime();
-    
-    // Automatische Aktualisierung jede Minute
-    setInterval(updateRelativeTime, 60000);
+    // Prüft alle 10 Sekunden auf Aktualisierung
+    setInterval(updateRelativeTime, 10000);
 </script>
 
 </body>
