@@ -13,169 +13,126 @@
       --card-bg: #161616;
     }
 
-    /* Animationen */
     @keyframes pulseGlow {
       0% { box-shadow: 0 0 15px rgba(255, 0, 0, 0.1); }
       50% { box-shadow: 0 0 30px rgba(255, 0, 0, 0.4); }
       100% { box-shadow: 0 0 15px rgba(255, 0, 0, 0.1); }
     }
 
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
     body {
       margin: 0;
-      font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      font-family: 'Segoe UI', Roboto, Arial, sans-serif;
       background: var(--bg-dark);
       color: white;
       scroll-behavior: smooth;
       overflow-x: hidden;
     }
 
-    /* NAVBAR MIT ROTEN STREIFEN */
+    /* NAVBAR */
     nav {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 0 20px;
+      padding: 0 15px;
       background: var(--nav-bg);
       position: sticky;
       top: 0;
       z-index: 1000;
       border-bottom: 2px solid var(--accent-color);
-      height: 70px;
+      height: 65px;
     }
 
-    nav img { height: 50px; width: auto; }
+    nav img { height: 45px; width: auto; }
 
-    nav ul { 
-      list-style: none; 
-      display: flex; 
-      margin: 0; 
-      padding: 0; 
-      height: 100%;
-    }
+    nav ul { list-style: none; display: flex; margin: 0; padding: 0; align-items: center; }
 
-    nav ul li {
-      display: flex;
-      align-items: center;
-      position: relative;
-    }
+    nav ul li { display: flex; align-items: center; }
 
-    /* Rote Streifen als Trenner zwischen den Menüpunkten */
     nav ul li:not(:last-child)::after {
       content: "";
       width: 2px;
-      height: 25px;
+      height: 20px;
       background: var(--accent-color);
-      margin: 0 15px;
-      opacity: 0.7;
+      margin: 0 10px;
     }
 
     nav ul li a { 
       color: #fff; 
       text-decoration: none; 
-      font-weight: 700; 
-      font-size: 0.95rem; 
+      font-weight: bold; 
+      font-size: 0.85rem; 
       text-transform: uppercase;
-      letter-spacing: 1px;
-      transition: 0.3s;
-      padding: 10px 0;
     }
 
-    nav ul li a:hover { 
-      color: var(--accent-color);
-    }
-
-    /* STARTBEREICH */
+    /* STARTBEREICH - FIX FÜR HANDY */
     #start {
       height: 100vh; height: 100svh; width: 100%;
-      background: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)), url('hintergrund.png');
-      background-size: cover; background-position: center center;
+      /* Hintergrund-Fix: Handybild zuerst, dann Desktop */
+      background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('hintergrund-handy.png'), url('hintergrund.png');
+      background-size: cover; 
+      background-position: center center;
+      background-repeat: no-repeat;
       display: flex; flex-direction: column; align-items: center; justify-content: center;
       text-align: center; padding: 0 20px; box-sizing: border-box;
     }
 
     #start h1 { 
-      font-size: clamp(2rem, 10vw, 3.8rem); 
+      font-size: clamp(1.8rem, 8vw, 3.5rem); 
       text-transform: uppercase; 
-      letter-spacing: 4px; 
       margin-bottom: 10px;
-      text-shadow: 2px 2px 10px rgba(0,0,0,0.8);
-      animation: fadeInUp 0.8s ease-out;
-    }
-
-    #start p { 
-      font-size: 1.2rem; 
-      color: #ccc; 
-      letter-spacing: 1px;
-      animation: fadeInUp 1s ease-out;
     }
 
     /* NEWS SEKTION */
-    section { padding: 50px 15px; max-width: 550px; margin: auto; }
+    section { padding: 40px 15px; max-width: 500px; margin: auto; }
 
     section h2 { 
-      font-size: 1.7rem; 
-      border-left: 5px solid var(--accent-color); 
+      font-size: 1.5rem; 
+      border-left: 4px solid var(--accent-color); 
       padding-left: 15px; 
-      margin-bottom: 35px; 
+      margin-bottom: 30px; 
       text-transform: uppercase;
-      letter-spacing: 1px;
     }
 
-    /* VERBESSERTE NEWS CARD */
     .news-container {
       background: var(--card-bg);
-      border-radius: 16px;
-      padding: 40px 25px;
-      border: 1px solid rgba(255, 0, 0, 0.4);
+      border-radius: 15px;
+      padding: 30px 20px;
+      border: 1px solid var(--accent-color);
       text-align: center;
-      position: relative;
       animation: pulseGlow 4s infinite ease-in-out;
       width: 100%;
       box-sizing: border-box;
+      overflow: hidden; /* Verhindert Überlaufen */
     }
 
-    .news-logo { 
-      height: 85px; 
-      margin-bottom: 20px; 
-      border-radius: 50%; 
-      border: 2px solid #333;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-    }
+    .news-logo { height: 70px; margin-bottom: 15px; border-radius: 50%; border: 2px solid #333; }
 
+    /* FIX: ERÖFFNUNGSPARTY TEXTGRÖSSE */
     .news-container h3 { 
       color: var(--accent-color); 
-      font-size: 2.1rem; 
+      font-size: clamp(1.3rem, 6vw, 2rem); /* Passt sich automatisch an */
       margin: 10px 0; 
       text-transform: uppercase;
-      font-weight: 900;
+      word-wrap: break-word; /* Bricht lange Wörter um */
     }
 
-    .news-details { 
-      font-size: 1.15rem; 
-      line-height: 1.9; 
-      margin-bottom: 30px;
-      color: #eee;
-    }
-    
+    .news-details { font-size: 1rem; line-height: 1.7; margin-bottom: 25px; color: #ddd; }
     .news-details strong { color: var(--accent-color); }
 
-    /* ZEIT-FENSTER */
     .time-badge {
-      display: inline-flex; align-items: center; font-size: 0.85rem; color: #999;
-      background: rgba(0, 0, 0, 0.3); padding: 10px 20px; border-radius: 50px;
+      display: inline-flex; align-items: center; font-size: 0.8rem; color: #888;
+      background: rgba(0, 0, 0, 0.4); padding: 8px 16px; border-radius: 50px;
       border: 1px solid #333;
-      font-weight: 600;
     }
 
-    .time-badge::before { content: "🕒"; margin-right: 10px; filter: grayscale(1); }
+    footer { text-align: center; padding: 30px 20px; background: #080808; color: #444; font-size: 0.75rem; border-top: 1px solid #1a1a1a; }
 
-    footer { text-align: center; padding: 40px 20px; background: #080808; color: #444; font-size: 0.8rem; border-top: 1px solid #1a1a1a; }
-
+    /* SPEZIELLE HANDY ANPASSUNG */
+    @media (max-width: 480px) {
+      nav ul li:not(:last-child)::after { margin: 0 8px; }
+      nav ul li a { font-size: 0.75rem; }
+      section { padding: 30px 10px; }
+    }
   </style>
 </head>
 <body>
@@ -216,17 +173,13 @@
     function updateRelativeTime() {
         const timeElement = document.getElementById('time-ago');
         if (!timeElement) return;
-
-        const timestampStr = timeElement.getAttribute('data-timestamp');
-        const timestamp = new Date(timestampStr);
+        const timestamp = new Date(timeElement.getAttribute('data-timestamp'));
         const now = new Date();
-        
         const diffInSeconds = Math.floor((now - timestamp) / 1000);
         let displayString = "";
 
-        if (diffInSeconds < 60) {
-            displayString = "Gerade eben";
-        } else if (diffInSeconds < 3600) {
+        if (diffInSeconds < 60) displayString = "Gerade eben";
+        else if (diffInSeconds < 3600) {
             const mins = Math.floor(diffInSeconds / 60);
             displayString = `Vor ${mins} ${mins === 1 ? 'Minute' : 'Minuten'}`;
         } else if (diffInSeconds < 86400) {
@@ -236,10 +189,8 @@
             const days = Math.floor(diffInSeconds / 86400);
             displayString = `Vor ${days} ${days === 1 ? 'Tag' : 'Tagen'}`;
         }
-
         timeElement.innerText = displayString;
     }
-
     updateRelativeTime();
     setInterval(updateRelativeTime, 30000);
 </script>
