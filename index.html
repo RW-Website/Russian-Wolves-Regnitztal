@@ -33,105 +33,131 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 0 15px;
+      padding: 0 40px;
       background: var(--nav-bg);
       position: sticky;
       top: 0;
       z-index: 1000;
       border-bottom: 2px solid var(--accent-color);
-      height: 65px;
+      height: 70px;
     }
 
-    nav img { height: 45px; width: auto; }
-
+    nav img { height: 50px; width: auto; }
     nav ul { list-style: none; display: flex; margin: 0; padding: 0; align-items: center; }
-
     nav ul li { display: flex; align-items: center; }
-
+    
     nav ul li:not(:last-child)::after {
       content: "";
       width: 2px;
-      height: 20px;
+      height: 25px;
       background: var(--accent-color);
-      margin: 0 10px;
+      margin: 0 15px;
     }
 
     nav ul li a { 
       color: #fff; 
       text-decoration: none; 
       font-weight: bold; 
-      font-size: 0.85rem; 
+      font-size: 0.95rem; 
       text-transform: uppercase;
+      transition: 0.3s;
     }
 
-    /* STARTBEREICH - FIX FÜR HANDY */
+    nav ul li a:hover { color: var(--accent-color); }
+
+    /* STARTBEREICH - INTELLIGENTER HINTERGRUND */
     #start {
-      height: 100vh; height: 100svh; width: 100%;
-      /* Hintergrund-Fix: Handybild zuerst, dann Desktop */
-      background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('hintergrund-handy.png'), url('hintergrund.png');
-      background-size: cover; 
+      height: 100vh;
+      height: 100svh;
+      width: 100%;
+      /* Standard für Desktop */
+      background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('hintergrund.png');
+      background-size: cover;
       background-position: center center;
       background-repeat: no-repeat;
-      display: flex; flex-direction: column; align-items: center; justify-content: center;
-      text-align: center; padding: 0 20px; box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 0 20px;
+      box-sizing: border-box;
     }
 
     #start h1 { 
-      font-size: clamp(1.8rem, 8vw, 3.5rem); 
+      font-size: clamp(2rem, 10vw, 3.8rem); 
       text-transform: uppercase; 
+      letter-spacing: 3px;
       margin-bottom: 10px;
+      text-shadow: 2px 2px 15px rgba(0,0,0,0.9);
     }
 
+    #start p { font-size: 1.3rem; color: #ccc; text-shadow: 1px 1px 5px rgba(0,0,0,0.9); }
+
     /* NEWS SEKTION */
-    section { padding: 40px 15px; max-width: 500px; margin: auto; }
+    section { padding: 60px 15px; max-width: 550px; margin: auto; }
 
     section h2 { 
-      font-size: 1.5rem; 
-      border-left: 4px solid var(--accent-color); 
+      font-size: 1.8rem; 
+      border-left: 5px solid var(--accent-color); 
       padding-left: 15px; 
-      margin-bottom: 30px; 
+      margin-bottom: 35px; 
       text-transform: uppercase;
     }
 
     .news-container {
       background: var(--card-bg);
-      border-radius: 15px;
-      padding: 30px 20px;
+      border-radius: 16px;
+      padding: 40px 25px;
       border: 1px solid var(--accent-color);
       text-align: center;
       animation: pulseGlow 4s infinite ease-in-out;
       width: 100%;
       box-sizing: border-box;
-      overflow: hidden; /* Verhindert Überlaufen */
     }
 
-    .news-logo { height: 70px; margin-bottom: 15px; border-radius: 50%; border: 2px solid #333; }
+    .news-logo { 
+      height: 85px; 
+      margin-bottom: 20px; 
+      border-radius: 50%; 
+      border: 2px solid #333;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+    }
 
-    /* FIX: ERÖFFNUNGSPARTY TEXTGRÖSSE */
     .news-container h3 { 
       color: var(--accent-color); 
-      font-size: clamp(1.3rem, 6vw, 2rem); /* Passt sich automatisch an */
+      font-size: clamp(1.4rem, 7vw, 2.2rem); 
       margin: 10px 0; 
       text-transform: uppercase;
-      word-wrap: break-word; /* Bricht lange Wörter um */
+      word-wrap: break-word;
+      font-weight: 900;
     }
 
-    .news-details { font-size: 1rem; line-height: 1.7; margin-bottom: 25px; color: #ddd; }
+    .news-details { font-size: 1.1rem; line-height: 1.8; margin-bottom: 30px; color: #eee; }
     .news-details strong { color: var(--accent-color); }
 
     .time-badge {
-      display: inline-flex; align-items: center; font-size: 0.8rem; color: #888;
-      background: rgba(0, 0, 0, 0.4); padding: 8px 16px; border-radius: 50px;
+      display: inline-flex; align-items: center; font-size: 0.85rem; color: #999;
+      background: rgba(0, 0, 0, 0.4); padding: 10px 22px; border-radius: 50px;
       border: 1px solid #333;
     }
 
-    footer { text-align: center; padding: 30px 20px; background: #080808; color: #444; font-size: 0.75rem; border-top: 1px solid #1a1a1a; }
+    footer { text-align: center; padding: 40px 20px; background: #080808; color: #444; font-size: 0.8rem; border-top: 1px solid #1a1a1a; }
 
-    /* SPEZIELLE HANDY ANPASSUNG */
-    @media (max-width: 480px) {
-      nav ul li:not(:last-child)::after { margin: 0 8px; }
-      nav ul li a { font-size: 0.75rem; }
-      section { padding: 30px 10px; }
+    /* SPEZIELLE ANPASSUNG FÜR HANDY */
+    @media (max-width: 768px) {
+      nav { padding: 0 15px; height: 65px; }
+      nav ul li:not(:last-child)::after { height: 20px; margin: 0 10px; }
+      nav ul li a { font-size: 0.8rem; }
+      
+      #start {
+        /* Hier wird explizit das Handy-Bild geladen */
+        background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('hintergrund-handy.png');
+        background-size: cover;
+        background-position: center center;
+      }
+      
+      section { padding: 40px 10px; }
     }
   </style>
 </head>
