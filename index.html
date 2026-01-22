@@ -46,7 +46,6 @@
     nav ul { list-style: none; display: flex; margin: 0; padding: 0; align-items: center; }
     nav ul li { display: flex; align-items: center; }
     
-    /* Rote Trennstreifen */
     nav ul li:not(:last-child)::after {
       content: "";
       width: 2px;
@@ -55,107 +54,60 @@
       margin: 0 15px;
     }
 
-    nav ul li a { 
-      color: #fff; 
-      text-decoration: none; 
-      font-weight: bold; 
-      font-size: 0.95rem; 
-      text-transform: uppercase;
-      transition: 0.3s;
-    }
-
+    nav ul li a { color: #fff; text-decoration: none; font-weight: bold; font-size: 0.95rem; text-transform: uppercase; transition: 0.3s; }
     nav ul li a:hover { color: var(--accent-color); }
 
-    /* STARTBEREICH - OPTIMIERTER HINTERGRUND */
+    /* START */
     #start {
-      height: 100vh;
-      height: 100svh;
-      width: 100%;
-      background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('hintergrund.png');
-      background-size: cover;
-      background-position: center center;
-      background-repeat: no-repeat;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 0 20px;
-      box-sizing: border-box;
+      height: 100vh; height: 100svh; width: 100%;
+      background: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)), url('hintergrund.png');
+      background-size: cover; background-position: center center;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      text-align: center; padding: 0 20px; box-sizing: border-box;
     }
 
-    #start h1 { 
-      font-size: clamp(1.8rem, 8vw, 3.8rem); 
-      text-transform: uppercase; 
-      letter-spacing: 3px;
-      margin-bottom: 10px;
-      text-shadow: 2px 2px 15px rgba(0,0,0,0.9);
-    }
+    #start h1 { font-size: clamp(1.8rem, 8vw, 3.8rem); text-transform: uppercase; letter-spacing: 3px; margin-bottom: 10px; }
+    #start p { font-size: 1.2rem; color: #ccc; }
 
-    #start p { font-size: 1.2rem; color: #ccc; text-shadow: 1px 1px 5px rgba(0,0,0,0.9); }
-
-    /* NEWS SEKTION */
+    /* NEWS */
     section { padding: 60px 15px; max-width: 550px; margin: auto; }
-
-    section h2 { 
-      font-size: 1.7rem; 
-      border-left: 5px solid var(--accent-color); 
-      padding-left: 15px; 
-      margin-bottom: 35px; 
-      text-transform: uppercase;
-    }
+    section h2 { font-size: 1.7rem; border-left: 5px solid var(--accent-color); padding-left: 15px; margin-bottom: 35px; text-transform: uppercase; }
 
     .news-container {
-      background: var(--card-bg);
-      border-radius: 16px;
-      padding: 40px 25px;
-      border: 1px solid var(--accent-color);
-      text-align: center;
-      animation: pulseGlow 4s infinite ease-in-out;
-      width: 100%;
-      box-sizing: border-box;
-      overflow: hidden;
+      background: var(--card-bg); border-radius: 16px; padding: 40px 25px; border: 1px solid var(--accent-color);
+      text-align: center; animation: pulseGlow 4s infinite ease-in-out; width: 100%; box-sizing: border-box;
     }
 
-    .news-logo { 
-      height: 80px; 
-      margin-bottom: 20px; 
-      border-radius: 50%; 
-      border: 2px solid #333;
-    }
-
-    /* Fix für lange Wörter auf Mobile */
-    .news-container h3 { 
-      color: var(--accent-color); 
-      font-size: clamp(1.3rem, 7vw, 2.2rem); 
-      margin: 10px 0; 
-      text-transform: uppercase;
-      word-wrap: break-word;
-      font-weight: 900;
-    }
-
+    .news-logo { height: 80px; margin-bottom: 20px; border-radius: 50%; border: 2px solid #333; }
+    .news-container h3 { color: var(--accent-color); font-size: clamp(1.3rem, 7vw, 2.2rem); margin: 10px 0; text-transform: uppercase; font-weight: 900; }
     .news-details { font-size: 1.1rem; line-height: 1.8; margin-bottom: 30px; color: #eee; }
     .news-details strong { color: var(--accent-color); }
 
-    .time-badge {
-      display: inline-flex; align-items: center; font-size: 0.85rem; color: #999;
-      background: rgba(0, 0, 0, 0.4); padding: 10px 22px; border-radius: 50px;
-      border: 1px solid #333;
+    .time-badge { display: inline-flex; align-items: center; font-size: 0.85rem; color: #999; background: rgba(0, 0, 0, 0.4); padding: 10px 22px; border-radius: 50px; border: 1px solid #333; }
+
+    /* RECHTLICHES BOXEN */
+    .legal-content { 
+      font-size: 0.85rem; 
+      color: #bbb; 
+      line-height: 1.6; 
+      display: none; 
+      margin-top: 20px; 
+      text-align: left; 
+      background: #111; 
+      padding: 25px; 
+      border-radius: 10px; 
+      border: 1px solid #333; 
+      animation: fadeInUp 0.5s ease;
     }
 
-    footer { text-align: center; padding: 40px 20px; background: #080808; color: #444; font-size: 0.8rem; border-top: 1px solid #1a1a1a; }
+    @keyframes fadeInUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-    /* MOBILE ANPASSUNGEN */
+    footer { text-align: center; padding: 40px 20px; background: #080808; color: #444; font-size: 0.8rem; border-top: 1px solid #1a1a1a; }
+    footer a { color: #666; text-decoration: none; margin: 0 10px; transition: 0.3s; font-weight: bold; }
+    footer a:hover { color: var(--accent-color); }
+
     @media (max-width: 768px) {
-      nav { padding: 0 15px; height: 65px; }
-      nav ul li:not(:last-child)::after { height: 20px; margin: 0 10px; }
-      nav ul li a { font-size: 0.8rem; }
-      
-      #start {
-        background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('hintergrund-handy.png');
-      }
-      
-      section { padding: 40px 10px; }
+      #start { background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('hintergrund-handy.png'); }
     }
   </style>
 </head>
@@ -184,16 +136,53 @@
       📍 <strong>Standort:</strong> Motorradfreunde Bamberg - Kramersfeld <br>
       🍖 <strong>Special:</strong> Für Essen und Trinken ist gesorgt!
     </div>
+    <div id="time-ago" class="time-badge" data-timestamp="2026-01-19T18:00:00">Wird berechnet...</div>
+  </div>
 
-    <div id="time-ago" class="time-badge" data-timestamp="2026-01-19T18:00:00">
-        Wird berechnet...
-    </div>
+  <div id="impressum" class="legal-content">
+    <h3 style="color: var(--accent-color);">Impressum</h3>
+    <p><strong>Angaben gemäß § 5 TMG:</strong><br>
+    Russian Wolves Regnitztal<br>
+    [Name]<br>
+    [Straße Nr.]<br>
+    [PLZ Ort]</p>
+    <p><strong>Kontakt:</strong><br>
+    E-Mail:<br>^^
+    Telefon:</p>
+  </div>
+
+  <div id="datenschutz" class="legal-content">
+    <h3 style="color: var(--accent-color);">Datenschutzerklärung</h3>
+    <p><strong>1. Datenschutz auf einen Blick</strong><br>
+    Der Betreiber dieser Website nimmt den Schutz Ihrer persönlichen Daten sehr ernst. Wir behandeln Ihre personenbezogenen Daten vertraulich und entsprechend der gesetzlichen Datenschutzvorschriften (DSGVO).</p>
+    <p><strong>2. Hosting</strong><br>
+    Diese Website wird bei einem externen Dienstleister gehostet. Die personenbezogenen Daten, die auf dieser Website erfasst werden, werden auf den Servern des Hosters gespeichert, um die Bereitstellung der Website zu ermöglichen.</p>
+    <p><strong>3. Ihre Rechte</strong><br>
+    Sie haben jederzeit das Recht, unentgeltlich Auskunft über Herkunft, Empfänger und Zweck Ihrer gespeicherten personenbezogenen Daten zu erhalten. Sie haben außerdem ein Recht auf Berichtigung oder Löschung dieser Daten.</p>
   </div>
 </section>
 
-<footer>&copy; 2026 Russian Wolves Regnitztal</footer>
+<footer>
+  <p>&copy; 2026 Russian Wolves Regnitztal</p>
+  <a href="javascript:void(0)" onclick="toggleLegal('impressum')">Impressum</a> | 
+  <a href="javascript:void(0)" onclick="toggleLegal('datenschutz')">Datenschutz</a>
+</footer>
 
 <script>
+    function toggleLegal(id) {
+        // Schließe das jeweils andere Fenster, falls es offen ist
+        const otherId = id === 'impressum' ? 'datenschutz' : 'impressum';
+        document.getElementById(otherId).style.display = 'none';
+        
+        const el = document.getElementById(id);
+        if (el.style.display === 'block') {
+            el.style.display = 'none';
+        } else {
+            el.style.display = 'block';
+            el.scrollIntoView({ behavior: 'smooth' });
+        }
+    }
+
     function updateRelativeTime() {
         const timeElement = document.getElementById('time-ago');
         if (!timeElement) return;
