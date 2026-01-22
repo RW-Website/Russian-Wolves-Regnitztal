@@ -97,13 +97,11 @@
       padding: 25px; 
       border-radius: 10px; 
       border: 1px solid #333; 
-      animation: fadeInUp 0.5s ease;
     }
 
-    @keyframes fadeInUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-
     footer { text-align: center; padding: 40px 20px; background: #080808; color: #444; font-size: 0.8rem; border-top: 1px solid #1a1a1a; }
-    footer a { color: #666; text-decoration: none; margin: 0 10px; transition: 0.3s; font-weight: bold; }
+    footer .legal-links { margin-top: 15px; }
+    footer a { color: #666; text-decoration: none; margin: 0 5px; transition: 0.3s; font-weight: bold; font-size: 0.75rem; }
     footer a:hover { color: var(--accent-color); }
 
     @media (max-width: 768px) {
@@ -141,54 +139,58 @@
 
   <div id="impressum" class="legal-content">
     <h3 style="color: var(--accent-color);">Impressum</h3>
-    <p><strong>Angaben gemäß § 5 TMG:</strong><br>
+    <p><strong>Verantwortlich für den Inhalt:</strong><br>
     Russian Wolves Regnitztal<br>
     Luca Saam<br>
-    Föhrenweg 1<br>
+    Föhrenweg 1]<br>
     91352 Hallerndorf</p>
     <p><strong>Kontakt:</strong><br>
     E-Mail: saamluca@gmail.com<br>
     Telefon: +4917682403067</p>
   </div>
 
-  <div id="datenschutz" class="legal-content">
+<div id="datenschutz" class="legal-content">
     <h3 style="color: var(--accent-color);">Datenschutzerklärung</h3>
-    <p><strong>1. Datenschutz auf einen Blick</strong><br>
+    <p><strong>1. Datenschutz</strong><br>
     Der Betreiber dieser Website nimmt den Schutz Ihrer persönlichen Daten sehr ernst. Wir behandeln Ihre personenbezogenen Daten vertraulich und entsprechend der gesetzlichen Datenschutzvorschriften (DSGVO).</p>
     <p><strong>2. Hosting</strong><br>
     Diese Website wird bei einem externen Dienstleister gehostet. Die personenbezogenen Daten, die auf dieser Website erfasst werden, werden auf den Servern des Hosters gespeichert, um die Bereitstellung der Website zu ermöglichen.</p>
     <p><strong>3. Ihre Rechte</strong><br>
     Sie haben jederzeit das Recht, unentgeltlich Auskunft über Herkunft, Empfänger und Zweck Ihrer gespeicherten personenbezogenen Daten zu erhalten. Sie haben außerdem ein Recht auf Berichtigung oder Löschung dieser Daten.</p>
   </div>
-  
-<div id="copyright" class="legal-content">
-    <h3 style="color: var(--accent-color);">Copyright & Nutzung</h3>
+
+  <div id="copyright" class="legal-content">
+    <h3 style="color: var(--accent-color);">Copyright & KI-Schutz</h3>
     <p><strong>Urheberrecht:</strong><br>
-    Die auf dieser Website veröffentlichten Inhalte (Texte, Bilder, Logos) unterliegen dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung der <strong>Russian Wolves Regnitztal</strong>.</p>
-    <p><strong>Verbot der Datennutzung:</strong><br>
+    Alle Inhalte (Texte, Bilder, Logos) unterliegen dem deutschen Urheberrecht. Jede Nutzung außerhalb der gesetzlichen Grenzen bedarf der schriftlichen Zustimmung.</p>
+    
+    <p><strong>KI-Trainings-Verbot:</strong><br>
+    Die Nutzung der Inhalte dieser Website zum Trainieren von Künstlicher Intelligenz, Machine Learning oder für automatisiertes Web-Scraping ist ausdrücklich **untersagt**. Wir widersprechen jeglicher Nutzung unserer Daten durch Crawler für Sprachmodelle oder Bild-KI-Generatoren.</p>
+
+    <p><strong>Impressum-Schutz:</strong><br>
     Der Nutzung von im Rahmen der Impressumspflicht veröffentlichten Kontaktdaten durch Dritte zur Übersendung von nicht ausdrücklich angeforderter Werbung und Informationsmaterialien wird hiermit ausdrücklich widersprochen. Wir behalten uns rechtliche Schritte im Falle der unverlangten Zusendung von Werbeinformationen vor.</p>
   </div>
 </section>
 
 <footer>
   <p>&copy; 2026 Russian Wolves Regnitztal</p>
-  <a href="javascript:void(0)" onclick="toggleLegal('impressum')">Impressum</a> | 
-  <a href="javascript:void(0)" onclick="toggleLegal('datenschutz')">Datenschutz</a>
+  <div class="legal-links">
+    <a href="javascript:void(0)" onclick="toggleLegal('impressum')">Impressum</a> | 
+    <a href="javascript:void(0)" onclick="toggleLegal('datenschutz')">Datenschutz</a> | 
+    <a href="javascript:void(0)" onclick="toggleLegal('copyright')">Copyright</a>
+  </div>
 </footer>
 
 <script>
     function toggleLegal(id) {
-        // Schließe das jeweils andere Fenster, falls es offen ist
-        const otherId = id === 'impressum' ? 'datenschutz' : 'impressum';
-        document.getElementById(otherId).style.display = 'none';
+        // Schließe alle anderen, falls offen
+        ['impressum', 'datenschutz', 'copyright'].forEach(item => {
+            if(item !== id) document.getElementById(item).style.display = 'none';
+        });
         
         const el = document.getElementById(id);
-        if (el.style.display === 'block') {
-            el.style.display = 'none';
-        } else {
-            el.style.display = 'block';
-            el.scrollIntoView({ behavior: 'smooth' });
-        }
+        el.style.display = (el.style.display === 'block') ? 'none' : 'block';
+        if(el.style.display === 'block') el.scrollIntoView({ behavior: 'smooth' });
     }
 
     function updateRelativeTime() {
