@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <title>Russian Wolves Regnitztal</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <style>
     :root {
@@ -19,6 +20,12 @@
       0% { box-shadow: 0 0 15px rgba(255, 0, 0, 0.1); }
       50% { box-shadow: 0 0 30px rgba(255, 0, 0, 0.4); }
       100% { box-shadow: 0 0 15px rgba(255, 0, 0, 0.1); }
+    }
+
+    /* Animation für das Hereinschweben der Buttons */
+    @keyframes slideIn {
+      from { transform: translateX(100px); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
     }
 
     body {
@@ -85,32 +92,42 @@
     .news-details { font-size: 1.1rem; line-height: 1.8; margin-bottom: 30px; color: #eee; }
     .news-details strong { color: var(--accent-color); }
 
-    /* SOCIAL BUTTONS */
-    .social-buttons {
+    .time-badge { display: inline-flex; align-items: center; font-size: 0.85rem; color: #999; background: rgba(0, 0, 0, 0.4); padding: 10px 22px; border-radius: 50px; border: 1px solid #333; }
+
+    /* FLOATING SOCIAL BUBBLES (Das ist neu!) */
+    .floating-socials {
+      position: fixed;
+      bottom: 30px;
+      right: 20px;
+      z-index: 9999;
       display: flex;
       flex-direction: column;
-      gap: 12px;
-      margin-bottom: 30px;
+      gap: 15px;
+      animation: slideIn 1s ease-out;
     }
 
-    .btn-social {
-      text-decoration: none;
+    .social-bubble {
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       color: white;
-      font-weight: bold;
-      padding: 12px 20px;
-      border-radius: 8px;
-      text-transform: uppercase;
-      font-size: 0.9rem;
-      transition: transform 0.2s, opacity 0.2s;
-      display: block;
+      text-decoration: none;
+      font-size: 1.8rem;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.6);
+      transition: transform 0.3s, box-shadow 0.3s;
+      border: 2px solid rgba(255,255,255,0.1);
     }
 
-    .btn-social:active { transform: scale(0.98); }
+    .social-bubble:hover {
+      transform: scale(1.15);
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+    }
 
-    .btn-facebook { background-color: var(--fb-color); }
-    .btn-instagram { background: var(--ig-gradient); }
-
-    .time-badge { display: inline-flex; align-items: center; font-size: 0.85rem; color: #999; background: rgba(0, 0, 0, 0.4); padding: 10px 22px; border-radius: 50px; border: 1px solid #333; }
+    .bubble-fb { background-color: var(--fb-color); }
+    .bubble-ig { background: var(--ig-gradient); }
 
     /* RECHTLICHES BOXEN */
     .legal-content { 
@@ -133,6 +150,10 @@
 
     @media (max-width: 768px) {
       #start { background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('hintergrund-handy.png'); }
+      
+      /* Auf Handy etwas kleiner und weiter unten */
+      .floating-socials { bottom: 20px; right: 15px; gap: 10px; }
+      .social-bubble { width: 45px; height: 45px; font-size: 1.4rem; }
     }
   </style>
 </head>
@@ -151,6 +172,15 @@
   <p>Loyalität • Stärke • Gemeinschaft</p>
 </div>
 
+<div class="floating-socials">
+  <a href="https://www.facebook.com/share/1BMSbnGaAU/" target="_blank" class="social-bubble bubble-fb" title="Facebook">
+    <i class="fab fa-facebook-f"></i>
+  </a>
+  <a href="https://www.instagram.com/russianwolvesregnitztal?igsh=emV5bnRqeWc4aW96" target="_blank" class="social-bubble bubble-ig" title="Instagram">
+    <i class="fab fa-instagram"></i>
+  </a>
+</div>
+
 <section id="news">
   <h2>Aktuelle News</h2>
   <div class="news-container">
@@ -161,12 +191,6 @@
       📍 <strong>Standort:</strong> Motorradfreunde Bamberg - Kramersfeld <br>
       🍖 <strong>Special:</strong> Für Essen und Trinken ist gesorgt!
     </div>
-
-    <div class="social-buttons">
-      <a href="https://www.facebook.com/share/1BMSbnGaAU/" target="_blank" class="btn-social btn-facebook">Folge uns auf Facebook</a>
-      <a href="https://www.instagram.com/russianwolvesregnitztal?igsh=emV5bnRqeWc4aW96" target="_blank" class="btn-social btn-instagram">Folge uns auf Instagram</a>
-    </div>
-
     <div id="time-ago" class="time-badge" data-timestamp="2026-01-19T18:00:00">Wird berechnet...</div>
   </div>
 
