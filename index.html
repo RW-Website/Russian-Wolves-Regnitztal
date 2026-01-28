@@ -11,6 +11,8 @@
       --bg-dark: #0e0e0e;
       --nav-bg: rgba(11, 11, 11, 0.98);
       --card-bg: #161616;
+      --fb-color: #1877F2;
+      --ig-gradient: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
     }
 
     @keyframes pulseGlow {
@@ -83,6 +85,31 @@
     .news-details { font-size: 1.1rem; line-height: 1.8; margin-bottom: 30px; color: #eee; }
     .news-details strong { color: var(--accent-color); }
 
+    /* SOCIAL BUTTONS */
+    .social-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 30px;
+    }
+
+    .btn-social {
+      text-decoration: none;
+      color: white;
+      font-weight: bold;
+      padding: 12px 20px;
+      border-radius: 8px;
+      text-transform: uppercase;
+      font-size: 0.9rem;
+      transition: transform 0.2s, opacity 0.2s;
+      display: block;
+    }
+
+    .btn-social:active { transform: scale(0.98); }
+
+    .btn-facebook { background-color: var(--fb-color); }
+    .btn-instagram { background: var(--ig-gradient); }
+
     .time-badge { display: inline-flex; align-items: center; font-size: 0.85rem; color: #999; background: rgba(0, 0, 0, 0.4); padding: 10px 22px; border-radius: 50px; border: 1px solid #333; }
 
     /* RECHTLICHES BOXEN */
@@ -134,6 +161,12 @@
       📍 <strong>Standort:</strong> Motorradfreunde Bamberg - Kramersfeld <br>
       🍖 <strong>Special:</strong> Für Essen und Trinken ist gesorgt!
     </div>
+
+    <div class="social-buttons">
+      <a href="https://www.facebook.com/share/1BMSbnGaAU/" target="_blank" class="btn-social btn-facebook">Folge uns auf Facebook</a>
+      <a href="https://www.instagram.com/russianwolvesregnitztal?igsh=emV5bnRqeWc4aW96" target="_blank" class="btn-social btn-instagram">Folge uns auf Instagram</a>
+    </div>
+
     <div id="time-ago" class="time-badge" data-timestamp="2026-01-19T18:00:00">Wird berechnet...</div>
   </div>
 
@@ -148,26 +181,22 @@
     Telefon: +49 171 3767246</p>
   </div>
 
-<div id="datenschutz" class="legal-content">
+  <div id="datenschutz" class="legal-content">
     <h3 style="color: var(--accent-color);">Datenschutzerklärung</h3>
     <p><strong>1. Datenschutz</strong><br>
     Der Betreiber dieser Website nimmt den Schutz Ihrer persönlichen Daten sehr ernst. Wir behandeln Ihre personenbezogenen Daten vertraulich und entsprechend der gesetzlichen Datenschutzvorschriften (DSGVO).</p>
     <p><strong>2. Hosting</strong><br>
-    Diese Website wird bei einem externen Dienstleister gehostet. Die personenbezogenen Daten, die auf dieser Website erfasst werden, werden auf den Servern des Hosters gespeichert, um die Bereitstellung der Website zu ermöglichen.</p>
+    Diese Website wird bei einem externen Dienstleister gehostet. Die personenbezogenen Daten, die auf dieser Website erfasst werden, werden auf den Servern des Hosters gespeichert.</p>
     <p><strong>3. Ihre Rechte</strong><br>
-    Sie haben jederzeit das Recht, unentgeltlich Auskunft über Herkunft, Empfänger und Zweck Ihrer gespeicherten personenbezogenen Daten zu erhalten. Sie haben außerdem ein Recht auf Berichtigung oder Löschung dieser Daten.</p>
+    Sie haben jederzeit das Recht auf Auskunft, Berichtigung oder Löschung Ihrer Daten.</p>
   </div>
 
   <div id="copyright" class="legal-content">
     <h3 style="color: var(--accent-color);">Nutzungsbedingungen</h3>
     <p><strong>Urheberrecht:</strong><br>
-    Alle Inhalte (Texte, Bilder, Logos) unterliegen dem deutschen Urheberrecht. Jede Nutzung außerhalb der gesetzlichen Grenzen bedarf der schriftlichen Zustimmung.</p>
-    
+    Alle Inhalte unterliegen dem deutschen Urheberrecht.</p>
     <p><strong>KI-Trainings-Verbot:</strong><br>
-    Die Nutzung der Inhalte dieser Website zum Trainieren von Künstlicher Intelligenz, Machine Learning oder für automatisiertes Web-Scraping ist ausdrücklich **untersagt**. Wir widersprechen jeglicher Nutzung unserer Daten durch Crawler für Sprachmodelle oder Bild-KI-Generatoren.</p>
-
-    <p><strong>Impressum-Schutz:</strong><br>
-    Der Nutzung von im Rahmen der Impressumspflicht veröffentlichten Kontaktdaten durch Dritte zur Übersendung von nicht ausdrücklich angeforderter Werbung und Informationsmaterialien wird hiermit ausdrücklich widersprochen. Wir behalten uns rechtliche Schritte im Falle der unverlangten Zusendung von Werbeinformationen vor.</p>
+    Die Nutzung der Inhalte zum Trainieren von KI oder für Web-Scraping ist ausdrücklich untersagt.</p>
   </div>
 </section>
 
@@ -182,11 +211,9 @@
 
 <script>
     function toggleLegal(id) {
-        // Schließe alle anderen, falls offen
         ['impressum', 'datenschutz', 'copyright'].forEach(item => {
             if(item !== id) document.getElementById(item).style.display = 'none';
         });
-        
         const el = document.getElementById(id);
         el.style.display = (el.style.display === 'block') ? 'none' : 'block';
         if(el.style.display === 'block') el.scrollIntoView({ behavior: 'smooth' });
