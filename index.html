@@ -34,7 +34,6 @@
       color: white;
       scroll-behavior: smooth;
       overflow-x: hidden;
-      /* Verhindert Text-Markierung */
       user-select: none;
       -webkit-user-select: none;
     }
@@ -108,11 +107,9 @@
       aspect-ratio: 1 / 1;
       cursor: pointer;
       border: 1px solid #222;
-      /* Schutz: Verhindert das "Ziehen" des Bildes */
       -webkit-user-drag: none;
     }
 
-    /* Schutz-Ebene über dem Bild */
     .gallery-item::after {
       content: "";
       position: absolute;
@@ -126,7 +123,7 @@
       height: 100%;
       object-fit: cover;
       transition: transform 0.5s ease;
-      pointer-events: none; /* Bild selbst reagiert nicht auf Klicks */
+      pointer-events: none;
     }
 
     .gallery-item:hover img {
@@ -150,7 +147,7 @@
       max-height: 90%;
       border: 2px solid var(--accent-color);
       border-radius: 5px;
-      pointer-events: none; /* Verhindert Rechtsklick in der Großansicht */
+      pointer-events: none;
     }
 
     #lightbox .close {
@@ -204,12 +201,15 @@
     }
   </style>
 </head>
-<body oncontextmenu="return false;"> <nav>
+<body oncontextmenu="return false;">
+
+<nav>
   <a href="#start"><img src="logo.jpeg" alt="Logo"></a>
   <ul>
     <li><a href="#start">Start</a></li>
     <li><a href="#news">News</a></li>
-    <li><a href="#gallery">Bilder</a></li> </ul>
+    <li><a href="#gallery">Bilder</a></li>
+  </ul>
 </nav>
 
 <div id="start">
@@ -243,14 +243,14 @@
 <section id="gallery">
   <h2>Bilder</h2>
   <div class="gallery-grid">
-    <div class="gallery-item" onclick="openLightbox('bild1.jpg')">
-      <img src="bild1.jpg" alt="Bilder">
+    <div class="gallery-item" onclick="openLightbox('bild1.png')">
+      <img src="bild1.png" alt="Bilder">
     </div>
-    <div class="gallery-item" onclick="openLightbox('bild2.jpg')">
-      <img src="bild2.jpg" alt="Bilder">
+    <div class="gallery-item" onclick="openLightbox('bild2.png')">
+      <img src="bild2.png" alt="Bilder">
     </div>
-    <div class="gallery-item" onclick="openLightbox('bild3.jpg')">
-      <img src="bild3.jpg" alt="Bilder">
+    <div class="gallery-item" onclick="openLightbox('bild3.jpeg')">
+      <img src="bild3.jpeg" alt="Bilder">
     </div>
   </div>
 </section>
@@ -289,7 +289,6 @@
     function openLightbox(src) {
       document.getElementById('lightbox-img').src = src;
       document.getElementById('lightbox').style.display = 'flex';
-      // Verhindert Scrollen wenn Bild offen ist
       document.body.style.overflow = 'hidden';
     }
     function closeLightbox() {
