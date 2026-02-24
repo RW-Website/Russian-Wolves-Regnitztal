@@ -22,7 +22,6 @@
       100% { box-shadow: 0 0 15px rgba(255, 0, 0, 0.1); }
     }
 
-    /* Animation für das Hereinschweben der Buttons */
     @keyframes slideIn {
       from { transform: translateX(100px); opacity: 0; }
       to { transform: translateX(0); opacity: 1; }
@@ -35,6 +34,9 @@
       color: white;
       scroll-behavior: smooth;
       overflow-x: hidden;
+      /* Verhindert Text-Markierung */
+      user-select: none;
+      -webkit-user-select: none;
     }
 
     /* NAVBAR */
@@ -57,13 +59,13 @@
     
     nav ul li:not(:last-child)::after {
       content: "";
-      width: 2px;
-      height: 25px;
-      background: var(--accent-color);
-      margin: 0 15px;
+      width: 1px;
+      height: 20px;
+      background: #333;
+      margin: 0 10px;
     }
 
-    nav ul li a { color: #fff; text-decoration: none; font-weight: bold; font-size: 0.95rem; text-transform: uppercase; transition: 0.3s; }
+    nav ul li a { color: #fff; text-decoration: none; font-weight: bold; font-size: 0.85rem; text-transform: uppercase; transition: 0.3s; }
     nav ul li a:hover { color: var(--accent-color); }
 
     /* START */
@@ -78,23 +80,89 @@
     #start h1 { font-size: clamp(1.8rem, 8vw, 3.8rem); text-transform: uppercase; letter-spacing: 3px; margin-bottom: 10px; }
     #start p { font-size: 1.2rem; color: #ccc; }
 
-    /* NEWS */
-    section { padding: 60px 15px; max-width: 550px; margin: auto; }
+    /* SEKTIONEN */
+    section { padding: 80px 15px; max-width: 900px; margin: auto; }
     section h2 { font-size: 1.7rem; border-left: 5px solid var(--accent-color); padding-left: 15px; margin-bottom: 35px; text-transform: uppercase; }
 
+    /* NEWS */
     .news-container {
       background: var(--card-bg); border-radius: 16px; padding: 40px 25px; border: 1px solid var(--accent-color);
-      text-align: center; animation: pulseGlow 4s infinite ease-in-out; width: 100%; box-sizing: border-box;
+      text-align: center; animation: pulseGlow 4s infinite ease-in-out; width: 100%; box-sizing: border-box; max-width: 550px; margin: auto;
     }
 
-    .news-logo { height: 80px; margin-bottom: 20px; border-radius: 50%; border: 2px solid #333; }
+    .news-logo { height: 80px; margin-bottom: 20px; border-radius: 50%; border: 2px solid #333; pointer-events: none; }
     .news-container h3 { color: var(--accent-color); font-size: clamp(1.3rem, 7vw, 2.2rem); margin: 10px 0; text-transform: uppercase; font-weight: 900; }
     .news-details { font-size: 1.1rem; line-height: 1.8; margin-bottom: 30px; color: #eee; }
-    .news-details strong { color: var(--accent-color); }
 
-    .time-badge { display: inline-flex; align-items: center; font-size: 0.85rem; color: #999; background: rgba(0, 0, 0, 0.4); padding: 10px 22px; border-radius: 50px; border: 1px solid #333; }
+    /* BILDER GALERIE */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 15px;
+    }
 
-    /* FLOATING SOCIAL BUBBLES (Das ist neu!) */
+    .gallery-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 10px;
+      aspect-ratio: 1 / 1;
+      cursor: pointer;
+      border: 1px solid #222;
+      /* Schutz: Verhindert das "Ziehen" des Bildes */
+      -webkit-user-drag: none;
+    }
+
+    /* Schutz-Ebene über dem Bild */
+    .gallery-item::after {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0,0,0,0);
+      z-index: 2;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+      pointer-events: none; /* Bild selbst reagiert nicht auf Klicks */
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.1);
+    }
+
+    /* LIGHTBOX */
+    #lightbox {
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0,0,0,0.9);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 2000;
+      padding: 20px;
+    }
+
+    #lightbox img {
+      max-width: 100%;
+      max-height: 90%;
+      border: 2px solid var(--accent-color);
+      border-radius: 5px;
+      pointer-events: none; /* Verhindert Rechtsklick in der Großansicht */
+    }
+
+    #lightbox .close {
+      position: absolute;
+      top: 30px;
+      right: 30px;
+      color: white;
+      font-size: 2.5rem;
+      cursor: pointer;
+    }
+
+    /* FLOATING SOCIALS */
     .floating-socials {
       position: fixed;
       bottom: 30px;
@@ -107,64 +175,41 @@
     }
 
     .social-bubble {
-      width: 55px;
-      height: 55px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      text-decoration: none;
-      font-size: 1.8rem;
+      width: 55px; height: 55px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      color: white; text-decoration: none; font-size: 1.8rem;
       box-shadow: 0 4px 15px rgba(0,0,0,0.6);
-      transition: transform 0.3s, box-shadow 0.3s;
+      transition: transform 0.3s;
       border: 2px solid rgba(255,255,255,0.1);
     }
 
-    .social-bubble:hover {
-      transform: scale(1.15);
-      box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
-    }
-
+    .social-bubble:hover { transform: scale(1.15); }
     .bubble-fb { background-color: var(--fb-color); }
     .bubble-ig { background: var(--ig-gradient); }
 
-    /* RECHTLICHES BOXEN */
+    /* RECHTLICHES */
     .legal-content { 
-      font-size: 0.85rem; 
-      color: #bbb; 
-      line-height: 1.6; 
-      display: none; 
-      margin-top: 20px; 
-      text-align: left; 
-      background: #111; 
-      padding: 25px; 
-      border-radius: 10px; 
-      border: 1px solid #333; 
+      font-size: 0.85rem; color: #bbb; display: none; margin-top: 20px; 
+      text-align: left; background: #111; padding: 25px; border-radius: 10px; border: 1px solid #333; 
     }
 
     footer { text-align: center; padding: 40px 20px; background: #080808; color: #444; font-size: 0.8rem; border-top: 1px solid #1a1a1a; }
     footer .legal-links { margin-top: 15px; }
-    footer a { color: #666; text-decoration: none; margin: 0 5px; transition: 0.3s; font-weight: bold; font-size: 0.75rem; }
-    footer a:hover { color: var(--accent-color); }
+    footer a { color: #666; text-decoration: none; margin: 0 5px; font-weight: bold; font-size: 0.75rem; }
 
     @media (max-width: 768px) {
       #start { background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('hintergrund-handy.png'); }
-      
-      /* Auf Handy etwas kleiner und weiter unten */
-      .floating-socials { bottom: 20px; right: 15px; gap: 10px; }
+      .floating-socials { bottom: 20px; right: 15px; }
       .social-bubble { width: 45px; height: 45px; font-size: 1.4rem; }
     }
   </style>
 </head>
-<body>
-
-<nav>
+<body oncontextmenu="return false;"> <nav>
   <a href="#start"><img src="logo.jpeg" alt="Logo"></a>
   <ul>
     <li><a href="#start">Start</a></li>
     <li><a href="#news">News</a></li>
-  </ul>
+    <li><a href="#gallery">Bilder</a></li> </ul>
 </nav>
 
 <div id="start">
@@ -173,10 +218,10 @@
 </div>
 
 <div class="floating-socials">
-  <a href="https://www.facebook.com/share/1BMSbnGaAU/" target="_blank" class="social-bubble bubble-fb" title="Facebook">
+  <a href="https://www.facebook.com/share/1BMSbnGaAU/" target="_blank" class="social-bubble bubble-fb">
     <i class="fab fa-facebook-f"></i>
   </a>
-  <a href="https://www.instagram.com/russianwolvesregnitztal?igsh=emV5bnRqeWc4aW96" target="_blank" class="social-bubble bubble-ig" title="Instagram">
+  <a href="https://www.instagram.com/russianwolvesregnitztal?igsh=emV5bnRqeWc4aW96" target="_blank" class="social-bubble bubble-ig">
     <i class="fab fa-instagram"></i>
   </a>
 </div>
@@ -193,36 +238,27 @@
     </div>
     <div id="time-ago" class="time-badge" data-timestamp="2026-01-19T18:00:00">Wird berechnet...</div>
   </div>
+</section>
 
-  <div id="impressum" class="legal-content">
-    <h3 style="color: var(--accent-color);">Impressum</h3>
-    Russian Wolves Regnitztal<br>
-    Sergej Tretjakow<br>
-    Salierstraße 16<br>
-    96049 Bamberg</p>
-    <p><strong>Kontakt:</strong><br>
-    E-Mail: tretjak.68@gmail.com<br>
-    Telefon: +49 171 3767246</p>
-  </div>
-
-  <div id="datenschutz" class="legal-content">
-    <h3 style="color: var(--accent-color);">Datenschutzerklärung</h3>
-    <p><strong>1. Datenschutz</strong><br>
-    Der Betreiber dieser Website nimmt den Schutz Ihrer persönlichen Daten sehr ernst. Wir behandeln Ihre personenbezogenen Daten vertraulich und entsprechend der gesetzlichen Datenschutzvorschriften (DSGVO).</p>
-    <p><strong>2. Hosting</strong><br>
-    Diese Website wird bei einem externen Dienstleister gehostet. Die personenbezogenen Daten, die auf dieser Website erfasst werden, werden auf den Servern des Hosters gespeichert.</p>
-    <p><strong>3. Ihre Rechte</strong><br>
-    Sie haben jederzeit das Recht auf Auskunft, Berichtigung oder Löschung Ihrer Daten.</p>
-  </div>
-
-  <div id="copyright" class="legal-content">
-    <h3 style="color: var(--accent-color);">Nutzungsbedingungen</h3>
-    <p><strong>Urheberrecht:</strong><br>
-    Alle Inhalte unterliegen dem deutschen Urheberrecht.</p>
-    <p><strong>KI-Trainings-Verbot:</strong><br>
-    Die Nutzung der Inhalte zum Trainieren von KI oder für Web-Scraping ist ausdrücklich untersagt.</p>
+<section id="gallery">
+  <h2>Bilder</h2>
+  <div class="gallery-grid">
+    <div class="gallery-item" onclick="openLightbox('bild1.jpg')">
+      <img src="bild1.jpg" alt="Bilder">
+    </div>
+    <div class="gallery-item" onclick="openLightbox('bild2.jpg')">
+      <img src="bild2.jpg" alt="Bilder">
+    </div>
+    <div class="gallery-item" onclick="openLightbox('bild3.jpg')">
+      <img src="bild3.jpg" alt="Bilder">
+    </div>
   </div>
 </section>
+
+<div id="lightbox" onclick="closeLightbox()">
+  <span class="close">&times;</span>
+  <img id="lightbox-img" src="">
+</div>
 
 <footer>
   <p>&copy; 2026 Russian Wolves Regnitztal</p>
@@ -231,16 +267,42 @@
     <a href="javascript:void(0)" onclick="toggleLegal('datenschutz')">Datenschutz</a> | 
     <a href="javascript:void(0)" onclick="toggleLegal('copyright')">Nutzungsbedingungen</a>
   </div>
+
+  <div id="impressum" class="legal-content">
+    <h3 style="color: var(--accent-color);">Impressum</h3>
+    Russian Wolves Regnitztal<br>Sergej Tretjakow<br>Salierstraße 16<br>96049 Bamberg
+    <p>E-Mail: tretjak.68@gmail.com<br>Telefon: +49 171 3767246</p>
+  </div>
+
+  <div id="datenschutz" class="legal-content">
+    <h3 style="color: var(--accent-color);">Datenschutz</h3>
+    <p>Personenbezogene Daten werden nur im Rahmen der gesetzlichen Vorschriften (DSGVO) verarbeitet.</p>
+  </div>
+
+  <div id="copyright" class="legal-content">
+    <h3 style="color: var(--accent-color);">Nutzungsbedingungen</h3>
+    <p>Alle Bilder und Texte sind urheberrechtlich geschützt. Das Herunterladen und die Verwendung für KI-Zwecke sind untersagt.</p>
+  </div>
 </footer>
 
 <script>
+    function openLightbox(src) {
+      document.getElementById('lightbox-img').src = src;
+      document.getElementById('lightbox').style.display = 'flex';
+      // Verhindert Scrollen wenn Bild offen ist
+      document.body.style.overflow = 'hidden';
+    }
+    function closeLightbox() {
+      document.getElementById('lightbox').style.display = 'none';
+      document.body.style.overflow = 'auto';
+    }
+
     function toggleLegal(id) {
         ['impressum', 'datenschutz', 'copyright'].forEach(item => {
             if(item !== id) document.getElementById(item).style.display = 'none';
         });
         const el = document.getElementById(id);
         el.style.display = (el.style.display === 'block') ? 'none' : 'block';
-        if(el.style.display === 'block') el.scrollIntoView({ behavior: 'smooth' });
     }
 
     function updateRelativeTime() {
