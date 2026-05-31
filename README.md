@@ -1,14 +1,51 @@
 # Russian Wolves Regnitztal Website
 
-Dies ist die offizielle Website der Russian Wolves Regnitztal.
+Dies ist das offizielle Repository der Website der Russian Wolves Regnitztal.
 
-## Nutzungsbedingungen
+---
+
+## Rechtliche Hinweise
 
 ### Urheberrecht
-Alle Inhalte dieses Repositories (Texte, Bilder, Logos und Code-Design) unterliegen dem deutschen Urheberrecht. Jede Nutzung außerhalb der gesetzlichen Grenzen bedarf der schriftlichen Zustimmung der Russian Wolves Regnitztal.
 
-### KI-Trainings-Verbot
-Die Nutzung der Inhalte dieser Website zum Trainieren von Künstlicher Intelligenz, Machine Learning oder für automatisiertes Web-Scraping ist ausdrücklich **untersagt**. Wir widersprechen jeglicher Nutzung unserer Daten durch Crawler für Sprachmodelle oder Bild-KI-Generatoren.
+Alle auf dieser Website sowie in diesem Repository veröffentlichten Inhalte, insbesondere Texte, Bilder, Grafiken, Logos, Design-Elemente und sonstige Werke, sind urheberrechtlich geschützt. Soweit nicht anders gekennzeichnet, liegen die Rechte bei den Russian Wolves Regnitztal oder den jeweiligen Rechteinhabern.
 
-### Impressum-Schutz
-Der Nutzung von im Rahmen der Impressumspflicht veröffentlichten Kontaktdaten durch Dritte zur Übersendung von nicht ausdrücklich angeforderter Werbung und Informationsmaterialien wird hiermit ausdrücklich widersprochen. Wir behalten uns rechtliche Schritte im Falle der unverlangten Zusendung von Werbeinformationen vor.
+Jede Form der Vervielfältigung, Bearbeitung, Verbreitung, öffentlichen Zugänglichmachung oder sonstigen Verwertung außerhalb der gesetzlichen Schranken des Urheberrechts bedarf der vorherigen schriftlichen Zustimmung des Rechteinhabers.
+
+---
+
+### Nutzung der Inhalte
+
+Die Inhalte dieses Repositories werden ausschließlich zum Betrieb und zur Dokumentation der offiziellen Website bereitgestellt. Sofern nicht ausdrücklich durch eine separate Lizenz geregelt, werden durch die Veröffentlichung keine weitergehenden Nutzungsrechte eingeräumt.
+
+---
+
+### Automatisierte Datenerfassung und KI-Nutzung
+
+Die Betreiber behalten sich sämtliche Rechte an den veröffentlichten Inhalten vor. Einer automatisierten Erfassung, Analyse oder Weiterverarbeitung der Inhalte wird ausdrücklich widersprochen, soweit dies nach geltendem Recht zulässig ist.
+
+Dies umfasst insbesondere die Verwendung von Inhalten zum Training, zur Optimierung oder zur Entwicklung von Systemen der Künstlichen Intelligenz, maschinellen Lernverfahren oder vergleichbaren automatisierten Technologien, soweit hierfür eine Zustimmung des Rechteinhabers erforderlich ist.
+
+---
+
+### Schutz von Kontaktdaten
+
+Der Nutzung von im Rahmen gesetzlicher Informationspflichten veröffentlichten Kontaktdaten durch Dritte zur Übersendung von nicht ausdrücklich angeforderter Werbung, Informationsmaterialien oder sonstigen kommerziellen Mitteilungen wird hiermit ausdrücklich widersprochen.
+
+Die Betreiber behalten sich die Einleitung rechtlicher Schritte im Falle unverlangter Werbeansprachen vor.
+
+---
+
+### Haftungsausschluss
+
+Die Inhalte dieses Repositories wurden mit größtmöglicher Sorgfalt erstellt. Dennoch übernehmen die Betreiber keine Gewähr für die Richtigkeit, Vollständigkeit oder Aktualität der bereitgestellten Informationen.
+
+---
+
+### Impressum
+
+Die gesetzlich erforderlichen Angaben gemäß § 5 DDG sowie weitere rechtliche Informationen sind dem Impressum der offiziellen Website zu entnehmen.
+
+---
+
+© Russian Wolves Regnitztal. Alle Rechte vorbehalten.
